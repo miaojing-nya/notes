@@ -25,8 +25,8 @@
 #### E.冒泡事件:
 在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。
 打个比方说：你在地方法院要上诉一件案子，如果地方没有处理此类案件的法院，地方相关部门会帮你继续往上级法院上诉，比如从市级到省级，直至到中央法院，最终使你的案件得以处理。
-###### 作用：
-1）事件冒泡允许多个操作被集中处理（把事件处理器添加到一个父级元素上，避免把事件处理器添加到多个子级元素上），它还可以让你在对象层的不同级别捕获事件。
+###### 1.作用：
+1）事件冒泡允许多个操作被集中处理（把事件处理器添加到一个父级元素上，避免把事件处理器添加到多个子级元素上），它还可以让你在对象层的不同级别捕获事件。（ 集中处理的例子）
 
 ```html
 <style>
@@ -48,6 +48,7 @@
 </div>
 
 <script>
+//本例子只在外面盒子定义了处理方法，而这个方法一样可以捕获到子元素点击行为并处理它。假设有成千上万子元素要处理，难道我们要为每个元素加“onclick="eventHandle(event)"”？显然没有这种集中处理的方法来的简单，同时它的性能也是更高的。
 function eventHandle(e){
     var e=e||window.event;
 
@@ -56,13 +57,53 @@ function eventHandle(e){
     alert(obj.id+' was click')
 }
 </script>
+
 ```
 
+2）让不同的对象同时捕获同一事件，并调用自己的专属处理程序做自己的事情，就像老板一下命令，各自员工做自己岗位上的工作去了。（同时捕获同一事件的例子）
+
+```html
+<style>
+#outSide{
+	width:100px;
+    height:100px;
+    background:#000;
+    padding:50px;
+}
+#inSide{
+	width:100px;
+    height:100px;
+    background:#CCC;
+}
+</style>
+
+<div onclick="outSideWork()" id="outSide">
+	<div onclick="inSideWork()" id="inSide"></div>
+</div>
+
+<script type="text/javascript">
+function outSideWork(){
+    alert('My name is outSide,I was working...');
+}
+
+function inSideWork(){
+    alert('My name is inSide,I was working...');
+}
+
+//因为下面程序自动激活单击事件，有些浏览器不允许，所以请单击灰色盒子，从这里开始下命令，这样因为冒泡的原因，黑色大盒子也会收到单击事件，并调用了自己的处理程序。如果还有更多盒子嵌套，一样道理。
+/*
+function bossOrder(){
+  document.getElementById('inSide').click();
+}
+bossOrder();
+*/
+</script>
+
+```
+3）以下事件不冒泡：blur、focus、load、unload。
+###### 2.阻止时间冒泡：
+
+``` js
+event.stopPropagation();
+```
 #### F.捕获事件:
-
-
-
-
-
-
-
