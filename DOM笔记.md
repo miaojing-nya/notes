@@ -28,24 +28,25 @@
 ###### 作用：
 1）事件冒泡允许多个操作被集中处理（把事件处理器添加到一个父级元素上，避免把事件处理器添加到多个子级元素上），它还可以让你在对象层的不同级别捕获事件。
 
-```css
+```html
+<style>
 #outSide{
-	width:100px;
+    width:100px;
     height:100px;
     background:#000;
     padding:50px;
 }
 #inSide{
-	width:100px;
+    width:100px;
     height:100px;
     background:#CCC;
 }
-```
+</style>
 
-```js
 <div onclick="eventHandle(event)" id="outSide">
   <div id="inSide"></div>
 </div>
+
 <script>
 function eventHandle(e){
     var e=e||window.event;
