@@ -1,16 +1,16 @@
 # 一.DOM属性
 属性是节点（HTML 元素）的值，您能够获取或设置。
 #### A.HTML属性作为Element的属性：
-######1.a标签定义一个超链接，用href属性。
-######2.img标签查询一张图片url，用src属性。
-######3.form表单设置类型属性或值属性等。
-######4.元素的class和id属性。
-######5.规定样式的style属性。
+1.a标签定义一个超链接，用href属性。
+2.img标签查询一张图片url，用src属性。
+3.form表单设置类型属性或值属性等。
+4.元素的class和id属性。
+5.规定样式的style属性。
 #### B.获取和设置非标准HTML属性：
-######1.getAttribute():查询属性(不返回数值，布尔值或对象)。
-######2.setAttribute():设置属性。
-######3.hasAttribute():检测属性是否存在。
-######4.removeAttribute():完全删除属性。
+1.getAttribute():查询属性(不返回数值，布尔值或对象)。
+2.setAttribute():设置属性。
+3.hasAttribute():检测属性是否存在。
+4.removeAttribute():完全删除属性。
 
 ``` js
 var image = document.images[0];
@@ -18,13 +18,13 @@ var width = parseInt(image.getAttibute("width"));
 image.setAttribute("class","thumbnail");
 ```
 #### C.数据集属性：
-######1.在HTML5文档中，任意以data-为前缀的小写的属性名字都是合法的，这些数据集属性不会对元素表现产生影响。
-######2.HTML5还在Element对象上定义了dataset属性。该属性指代一个对象，它的各个属性对应去掉前缀的data-属性，所以dataset.x应保存data-x属性的指，带连字符的属性对应于驼峰命名法属性名：data-jquery-testx属性就变成dataset.jqueryTest属性。
-######3.dataset属性是元素的data-属性的实时，双向接口。设置或删除dataset的一个属性就等同于设置或移除对应元素的data-属性。
+1.在HTML5文档中，任意以data-为前缀的小写的属性名字都是合法的，这些数据集属性不会对元素表现产生影响。
+2.HTML5还在Element对象上定义了dataset属性。该属性指代一个对象，它的各个属性对应去掉前缀的data-属性，所以dataset.x应保存data-x属性的指，带连字符的属性对应于驼峰命名法属性名：data-jquery-testx属性就变成dataset.jqueryTest属性。
+3.dataset属性是元素的data-属性的实时，双向接口。设置或删除dataset的一个属性就等同于设置或移除对应元素的data-属性。
 #### D.作为Attr节点的属性：
-######1.Node类型定义了attributes属性，针对非Element对象的任何节点，该属性为null。针对Element对象，该属性是只读的类数组对象，代表元素的所有属性。
-######2.当索引attributes对象时得到的值是Attr对象，Attr对象一类特殊的Node，不像Node一样去用。
-######3.Attr的name和value属性返回该属性的名字和值。
+1.Node类型定义了attributes属性，针对非Element对象的任何节点，该属性为null。针对Element对象，该属性是只读的类数组对象，代表元素的所有属性。
+2.当索引attributes对象时得到的值是Attr对象，Attr对象一类特殊的Node，不像Node一样去用。
+3.Attr的name和value属性返回该属性的名字和值。
 
 ``` js
 document.body.attributes[0]     //用数字索引访问：body元素的第一个属性
