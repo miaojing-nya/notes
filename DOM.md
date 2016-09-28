@@ -107,3 +107,4 @@ event.stopPropagation();
 ```
 #### F.捕获事件:
 与事件冒泡相反，事件会从最外层开始发生，直到最具体的元素。如果时间冒泡发生顺序是：p -> div -> body -> html -> document，那么事件捕获是：document -> html -> body -> div -> p
+# 二.DOM属性
