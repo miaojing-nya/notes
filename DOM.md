@@ -39,7 +39,32 @@ document.body.attributes["onload"]     //可以用属性名索引：body元素�
 ######nodeValue：指定表示元素值的读/写属性。
 ######parentNode：返回元素的父节点。
 ######previousSibling：返回紧邻当前元素之前的元素。
-# 二.DOM事件
+# 二.DOM方法
+方法是我们可以在HTML元素上执行的动作。
+#### 常用方法：
+######getElementById()：获取有指定惟一ID属性值文档中的元素素。
+``` js
+var element=document.getElementById("intro");     //获取id值为intro的元素
+```
+######getElementsByTagName()：返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。
+######getElementsByClassName()：返回包含带有指定类名的所有元素的节点列表。
+######appendChild()：把新的子节点添加到指定节点。
+######removeChild()：删除子节点。
+######replaceChild()：替换子节点。
+######insertBefore()：在指定的子节点前面插入新的子节点。
+######createAttribute()：创建属性节点。
+######createElement()：创建元素节点。
+######createTextNode()：创建文本节点。
+######getAttribute()：返回指定的属性值。
+######setAttribute()：把指定属性设置或修改为指定的值。
+######createElement(tagName)：文档对象上的createElement方法可以创建由tagName指定的元素。如果以串div作为方法参数，就会生成一个div元素。
+######createTextNode(text) 文档对象的createTextNode方法会创建一个包含静态文本的节点。
+######insertBefore(newNode, targetNode)将节点newNode作为当前元素的子节点插到targetNode元素前面。
+######removeChild(childNode) 这个方法从元素中删除子元素childNode。
+######replaceChild(newNode, oldNode) 这个方法将节点oldNode替换为节点newNode。
+######hasChildnodes() 这个方法返回一个布尔值，指示元素是否有子元素。
+
+# 三.DOM事件
 #### A.表单事件：
 ######1.提交表单和重置表单时，会触发submit和reset事件。
 ######2.当用户和按钮（包括复选框）交互时，会发生click事件。
