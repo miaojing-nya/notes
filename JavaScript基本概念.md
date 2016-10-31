@@ -84,9 +84,10 @@
      var d = a+b;   //结果：21（使用递减后的值为现值）
     ```
  4. 布尔操作符
+
      逻辑非！(求反) | 逻辑与&& | 逻辑或 &vert;&vert;
      -------------|---------|---------
-     对象返回false；null，NaN，undefined，空字符串返回true；非空字符串返回false；数值0返回true；任意非0数值包括infinity，返回false；|有null就返回null；有NaN就返回NaN；有undefined就返回undefined；第一个是对象或者两个都是对象，则返回第二个操作数；若第二个操作数是对象，则只有在第一个是true时才返回第二个对象；|第一个操作数是对象则返回第一个；第一个结果是false则返回第二个；两个都是对象返回第一个；两个都是null返回null；都是NaN返回NaN；都是undefined返回undefined；
+     对象返回false；null，NaN，undefined，空字符串返回true；非空字符串返回false；数值0返回true；任意非0数值包括infinity，返回false|有null就返回null；有NaN就返回NaN；有undefined就返回undefined；第一个是对象或者两个都是对象，则返回第二个操作数；若第二个操作数是对象，则只有在第一个是true时才返回第二个对象|第一个操作数是对象则返回第一个；第一个结果是false则返回第二个；两个都是对象返回第一个；两个都是null返回null；都是NaN返回NaN；都是undefined返回undefined
 
 1. 一个=是赋值，两个=是相等，三个=是全等，！=不相等，！==不全等
     `var a = ("55" == 55)  //true,因为转换后相等`
