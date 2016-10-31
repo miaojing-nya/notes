@@ -9,50 +9,49 @@
 
 1. 语句：语句以分号结尾，无论是一条语句还是多条语句，一般使用代码块的形式{}
 2. 变量：
-```
-var a = "hello";
-function check(){
-	var a = "hi";
-    return a;
-}
-check();     //结果：“hi”。函数体内局部变量优先级高于同名的全局变量
-```
-```
-function test(){
-	var a = "hi";
-}
-test();
-alert(a);	//结果：“undefined”。局部变量
-```
-```
-var a = "hi";
-function test(){
-  test();
-}
-alert(a);   //结果：“hi”。全局变量
-```
-```
-var a = "hi";
-function test(){
-}
-test();
-alert(a);   //结果：“hi”。全局变量
-```
-```
-function test(){
-  a = "hi";
-}
-test();
-alert(a);   //结果：“hi”。全局变量可以不写var
-```
+    ```
+    var a = "hello";
+    function check(){
+        var a = "hi";
+        return a;
+    }
+    check();     //结果：“hi”。函数体内局部变量优先级高于同名的全局变量
+    ```
+    ```
+    function test(){
+        var a = "hi";
+    }
+    test();
+    alert(a);	//结果：“undefined”。局部变量
+    ```
+    ```
+    var a = "hi";
+    function test(){
+      test();
+    }
+    alert(a);   //结果：“hi”。全局变量
+    ```
+    ```
+    var a = "hi";
+    function test(){
+    }
+    test();
+    alert(a);   //结果：“hi”。全局变量
+    ```
+    ```
+    function test(){
+      a = "hi";
+    }
+    test();
+    alert(a);   //结果：“hi”。全局变量可以不写var
+    ```
 
 1. 数据类型：Undefind,Null,Boolean,Number和String五种基本数据类型，Object（包括数组和函数）一种复杂数据类型。五种基本数据类型是原始值，不可更改，值相等时他们才相等，比较两个单独字符串时，当且仅当长度相等且每个索引的字符都等时，他们才等。对象是可变的，值是可修改的，对象即便包含同样属性和相同值，或是各个索引完全相等，那他们也不等。
-```
- var a = {x=1},b = {x=1};  //a,b不全等，两个单独对象永不相等。
- var a = [],b = [];  //a,b不全等，两个单独数组永不相等。
- var a = [],b = a;b[0] = 1;a[0];a===b;  //a,b全等，ab引用同一个数组
-```
-
+    ```
+     var a = {x=1},b = {x=1};  //a,b不全等，两个单独对象永不相等。
+     var a = [],b = [];  //a,b不全等，两个单独数组永不相等。
+     var a = [],b = a;b[0] = 1;a[0];a===b;  //a,b全等，ab引用同一个数组
+    ```
  1. typeof:检测给定变量的数据类型。
  2. Boolean:只有true（转数值1）和false（转数值0），区分大小写，所以True只是标识符。
  3. number：float浮点数值；NaN非数值；范围在负无穷到正无穷；
@@ -86,9 +85,9 @@ typeof null == typeof undefind;   //结果：false
 ```
 
  4. 布尔操作符
-     | 逻辑非！(求反) | 逻辑与&& | 逻辑或// |
-     |--------|--------|--------|
-     |对象返回false；null，NaN，undefined，空字符串返回true；非空字符串返回false；数值0返回true；任意非0数值包括infinity，返回false；|有null就返回null；有NaN就返回NaN；有undefined就返回undefined；第一个是对象或者两个都是对象，则返回第二个操作数；若第二个操作数是对象，则只有在第一个是true时才返回第二个对象；|第一个操作数是对象则返回第一个；第一个结果是false则返回第二个；两个都是对象返回第一个；两个都是null返回null；都是NaN返回NaN；都是undefined返回undefined；|
+     逻辑非！(求反) | 逻辑与&& | 逻辑或 &vert;&vert;
+     -------------|---------|---------
+     对象返回false；null，NaN，undefined，空字符串返回true；非空字符串返回false；数值0返回true；任意非0数值包括infinity，返回false；|有null就返回null；有NaN就返回NaN；有undefined就返回undefined；第一个是对象或者两个都是对象，则返回第二个操作数；若第二个操作数是对象，则只有在第一个是true时才返回第二个对象；|第一个操作数是对象则返回第一个；第一个结果是false则返回第二个；两个都是对象返回第一个；两个都是null返回null；都是NaN返回NaN；都是undefined返回undefined；
 1. 一个=是赋值，两个=是相等，三个=是全等，！=不相等，！==不全等
 `var a = ("55" == 55)  //true,因为转换后相等`
 `var a = ("55" === 55)  //false,不同的数据类型不相等`
