@@ -9,7 +9,7 @@
 
     `sudo npm install vue-cli -g     //sudo可以查看隐藏的文件或文件夹`
 
-    这时会出现paddword让你输入开机密码，然后等待安装
+    这时会出现paddword让你输入开机密码，然后等待安装。
 4. 创建第一个Vue应用：
 
    重新编译是control加c；
@@ -34,7 +34,9 @@
 
     这样浏览器就自动打开了http://localhost:8080的页面。
 
-    更改默认端口：默认启动的端口为8080，端口容易冲突。修改配置文件package.json，更换端口为8090
+5. 项目结构：如下图
+
+6. 更改默认端口：默认启动的端口为8080，端口容易冲突。修改配置文件package.json，更换端口为8090。
 
     我们先看下package.json页面的代码：
 
@@ -55,3 +57,129 @@
     `cross-env NODE_ENV=development webpack-dev-server --open --inline --hot --port 8090`
 
     `可以在后面加--port端口，但是要重新跑下npm run dev,那么浏览器就自动打开了http://localhost:8090的页面`
+
+7. 热重载：就是不用再按F5来手动刷新，它会自动加载浏览器，保存秒级更新。
+
+8. 引入资源：在index.html中引入资源，采用jsdelivr CDN加速。
+
+	`<!-- Bootstrap -->`
+
+    `<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css">`
+
+    `<!-- Octicons -->`
+
+    `<link rel="stylesheet" href="https://cdn.jsdelivr.net/octicons/3.5.0/octicons.css"> `
+
+   1. CDN:是一个服务端的静态资源加速服务，每一次都不会访问真实的静态资源，访问专门的cdn服务器，然后资源就会缓存，解决 Internet网络拥挤的状况，降低流量，提高用户访问速率
+
+   2. jsdelivr:是一个开源的CDN解决方案，用于帮助开发者和站长。包含JavaScript插件，CSS框架，字体等Web上常用的静态资源。
+
+9. 常用的简单Vue指令：
+
+   1. v-model：表单控件绑定。用于创建双向绑定
+
+	```
+	<span>Message is: {{ message }}</span>
+	<br>
+	<input type="text" v-model="message" placeholder="edit me">
+    //结果：span里自动更新input输入的内容
+	```
+
+   2. v-if 根据表达式的值的真假条件渲染元素。
+   3. v-for 列表渲染。将元素或模板块重复数次，遍历用到v-for。特定语法是：
+
+	```
+	<ul id="example-1">
+      <li v-for="item in items">
+        {{ item.message }}
+      </li>
+    </ul>
+	```
+
+	```
+	var example1 = new Vue({
+      el: '#example-1',
+      data: {
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' }
+        ]
+      }
+    })
+	```
+
+   4. @click 是v-on:click的简写，绑定事件监听。
+
+	```
+	<div id="example">
+      <button v-on:click="greet">Greet</button>
+    </div>
+	```
+
+    ```
+	var vm = new Vue({
+      el: '#example',
+      data: {
+        name: 'Vue.js'
+      },
+      // 在 `methods` 对象中定义方法
+      methods: {
+        greet: function (event) {
+          // 方法内 `this` 指向 vm
+          alert('Hello ' + this.name + '!')
+          // `event` 是原生 DOM 事件
+          alert(event.target.tagName)
+        }
+      }
+    })
+
+    // 也可以在 JavaScript 代码中调用方法
+    vm.greet() // -> 'Hello Vue.js!'
+	```
+
+10. 计算属性：computed
+
+	`{{fullName}}`
+
+    ```
+	data () {
+      return {
+        firstName: 'John',
+        lastName: 'Smith',
+      }
+   }
+	```
+
+    ```
+	computed: {
+      fullName() {
+        return (this.firstName + ' ' + this.lastName);
+      }
+    },
+	```
+
+11. 组件：components
+
+	`import Hello from './components/globle.vue';`
+
+    `components: {Hello}`
+
+12. :class=“”可以加值，加函数，加任何，比如：两种写法
+
+	```
+	<input type="text" v-model="content" :class="{ 'border-none': content=='', 'border-red': content!='' }">
+	```
+
+    ```
+	<input type="text" v-model="content" :class="element()">
+
+    element: function () {
+        if(this.content==''){
+          return;
+        }else{
+          return "border-red";
+        }
+      }
+	```
+
+13. 实际操作代码：如下图
