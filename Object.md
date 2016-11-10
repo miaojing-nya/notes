@@ -159,3 +159,62 @@
     4.abs():绝对值：
 
 	`document.write(Math.abs(-10));     //结果：10`
+
+### 函数
+
+	```
+	function demo(){
+    	var a = 10;
+        var b= 20;
+    	var sum = a+b;
+        alert(sum);     //结果：30
+    }
+    demo();     //必须调用后才有效果，或者在HTML内部调用，onclick=“demo()”
+	```
+
+	```
+	function demo(a,b){     //参数用逗号隔开，可以是任意多个
+    	var sum = a+b;
+        return sum;
+    }
+    var v1 = demo(10,20);     //要对应传递两个参数
+    alert(v1);     //结果：30
+	```
+
+	```
+	function demo(name,age){
+    	alert("我的名字是"+name+"我的年龄是"+age);
+    }
+    demo("苗婧",27);     //结果：我的名字是苗婧我的年龄是27
+    ```
+
+    ```
+	function demo(){
+    	return "hello";
+    }
+    var a = demo()+"苗婧"
+    alert(a);     //结果：hello苗婧
+    ```
+
+    ```
+	function demo(a,b){
+    	if(a>b){
+        	return("a比较大");
+        }else{
+        	return("b比较大");
+        }
+    }
+    demo(200,20);     //a比较大
+    ```
+
+    ```
+	function demo(a,b){
+    	if(a>b){
+        	return("a比较大");
+        }else{
+        	return("b比较大");
+        }
+    }
+    var v=demo(200,20);
+    alert(v);     //a比较大
+    ```
