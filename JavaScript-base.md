@@ -42,7 +42,7 @@
     ```
     ```
     function test(){
-      a = "hi";
+      a = "hi";     //不用var声明的全局变量，要调用才有结果
     }
     test();
     alert(a);   //结果：“hi”。全局变量可以不写var
