@@ -2,14 +2,14 @@
 
 ##### 1. HTML常用标签
 
-块元素：div，ul，dl，ol，form，h1~h6，p，table
+&emsp块元素：div，ul，dl，ol，form，h1~h6，p，table
 
 1. 总是在新行上开始；
 2. 高度，行高以及外边距和内边距都可设置；
 3. 宽度缺省是它的容器的100%，除非设定一个宽度；
 4. 它可以容纳内联元素和其他块元素；
 
-内联元素：span，a，img，input，label，textarea，b，em，i
+&ensp内联元素：span，a，img，input，label，textarea，b，em，i
 
 1. 和其他元素都在一行上；
 2. 高，行高及外边距和内边距不可改变；
@@ -81,8 +81,10 @@ Document Object Module, 文档对象模型。我们通过JavaScript操作页面�
    `Height = height(包含padding-top + padding-bottom + border-top + border-bottom)`
 
 3. padding-box
-`Width = width(包含padding-left + padding-right) + border-top + border-bottom`
-`Height = height(包含padding-top + padding-bottom) + border-top + border-bottom`
+
+   `Width = width(包含padding-left + padding-right) + border-top + border-bottom`
+
+   `Height = height(包含padding-top + padding-bottom) + border-top + border-bottom`
 
 4. margin叠加：只有块元素的垂直外边距才会发生外边距叠加。行内框、浮动框或绝对定位框之间的外边距不会叠加。折叠结果遵循下列计算规则：
    1. 两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。
