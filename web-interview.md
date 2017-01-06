@@ -69,12 +69,16 @@ Document Object Module, 文档对象模型。我们通过JavaScript操作页面�
 想象成一个盒子，它有四个属性：外边距（margin）、边框（border）、内边距（padding）、内容（content）。
 
 1. 盒模型默认的值是content-box
-`Width = width + padding-left + padding-right + border-left + border-right`
-`Height = height + padding-top + padding-bottom + border-top + border-bottom`
+
+   `Width = width + padding-left + padding-right + border-left + border-right`
+
+   `Height = height + padding-top + padding-bottom + border-top + border-bottom`
 
 2. border-box
-`Width = width(包含padding-left + padding-right + border-left + border-right)`
-`Height = height(包含padding-top + padding-bottom + border-top + border-bottom)`
+
+   `Width = width(包含padding-left + padding-right + border-left + border-right)`
+
+   `Height = height(包含padding-top + padding-bottom + border-top + border-bottom)`
 
 3. padding-box
 `Width = width(包含padding-left + padding-right) + border-top + border-bottom`
