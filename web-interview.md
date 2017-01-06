@@ -2,14 +2,14 @@
 
 ##### 1. HTML常用标签
 
-块元素：div，ul，dl，ol，form，h1~h6，p，table
+  块元素：div，ul，dl，ol，form，h1~h6，p，table
 
 1. 总是在新行上开始；
 2. 高度，行高以及外边距和内边距都可设置；
 3. 宽度缺省是它的容器的100%，除非设定一个宽度；
 4. 它可以容纳内联元素和其他块元素；
 
-内联元素：span，a，img，input，label，textarea，b，em，i
+  内联元素：span，a，img，input，label，textarea，b，em，i
 
 1. 和其他元素都在一行上；
 2. 高，行高及外边距和内边距不可改变；
@@ -213,3 +213,7 @@ img
 ##### 28. 描述一下cookies，sessionStorage和localStorage的区别？
 
 笔记
+
+##### 29. XMLHttpRequest
+
+当页面全部加载完毕后，客户端通过该对象向服务器请求数据，服务器端接受数据并处理后，向客户端反馈数据。
