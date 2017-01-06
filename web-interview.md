@@ -9,7 +9,7 @@
 3. 宽度缺省是它的容器的100%，除非设定一个宽度；
 4. 它可以容纳内联元素和其他块元素；
 
-内联元素：span，a，img，input，label，textarea，b，em，i
+  内联元素：span，a，img，input，label，textarea，b，em，i
 
 1. 和其他元素都在一行上；
 2. 高，行高及外边距和内边距不可改变；
