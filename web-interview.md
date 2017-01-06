@@ -2,7 +2,7 @@
 
 ##### 1. HTML常用标签
 
-块元素：div，ul，dl，ol，form，h1~h6，p，table
+  块元素：div，ul，dl，ol，form，h1~h6，p，table
 
 1. 总是在新行上开始；
 2. 高度，行高以及外边距和内边距都可设置；
