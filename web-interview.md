@@ -30,7 +30,7 @@
 
 ##### 4. 理解DOM结构
 
-Document Object Module, 文档对象模型。我们通过JavaScript操作页面的元素，进行添加、移动、改变或移除的方法和属性, 都是DOM提供的。
+  Document Object Module, 文档对象模型。我们通过JavaScript操作页面的元素，进行添加、移动、改变或移除的方法和属性, 都是DOM提供的。
 
 一. 标准：W3C DOM 标准被分为 3 个不同的部分
 
