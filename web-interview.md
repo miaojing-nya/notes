@@ -108,6 +108,7 @@ Document Object Module, 文档对象模型。我们通过JavaScript操作页面�
 
 1. table布局：布局快，兼容性好，但改动不便。
 2. div+css布局：布局灵活，改动方便，但兼容性较差，更符w3c标准，html和css分开存储，有利于搜索排名提升。
+3. 常用的几种方式布局：float浮动布局；position属性+display属性；响应式布局flex;设为Flex布局以后，子元素的float、clear和vertical-align属性将失效ie10+。
 
 ##### 10. strong：粗体，多用于文本；em：斜体；b：粗体，多用于标题
 
@@ -164,7 +165,16 @@ em它会继承父级元素的字体大小，因此并不是一个固定的值。
 
 ##### 20. 什么是hack技术
 
-为了解决IE浏览器6，7，8兼容的一种方式
+为了解决IE浏览器6，7，8兼容的一种方式。
+
+```
+.box{
+    background-color:#f1ee18;/*所有识别*/
+    .background-color:#00deff\9; /*IE6、7、8识别*/
+    +background-color:#a200ff;/*IE6、7识别*/
+    _background-color:#1e0bd1;/*IE6识别*/
+}
+```
 
 ##### 21. rgba()和opacity的区别
 
@@ -215,7 +225,49 @@ img
 1. cookies：数据的生命期一般由服务器生成，可设置失效时间。如果在浏览器端生成Cookie，默认是关闭浏览器后失效；存放数据大小4K左右；与服务器端通信：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题；易用性：需要程序员自己封装，源生的Cookie接口不友好。
 2. localStorage和sessionStorage：存放数据大小：一般为5MB；与服务器端通信：仅在客户端（即浏览器）中保存，不参与和服务器的通信；易用性：源生接口可以接受，亦可再次封装来对Object和Array有更好的支持；但是数据的生命期：localStorage除非被清除，否则永久保存，sessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除
 
-
 ##### 29. XMLHttpRequest
 
 当页面全部加载完毕后，客户端通过该对象向服务器请求数据，服务器端接受数据并处理后，向客户端反馈数据。
+
+##### 30. audio和video的支持格式
+
+audio是音频，支持mp3 4 wmv等，video标签才支持视频，mp4 flv webm ogv mpg等。
+
+##### 31. 创建对象有几种方式？
+
+1. 基于Object对象
+
+```
+var person = new Object();
+person.name = 'My Name';
+person.age = 18;
+person.getName = function(){
+    return this.name;
+}
+```
+
+2. 对象字面量方式（比较清楚的查找对象包含的属性及方法）
+
+```
+var person = {
+    name : 'My name',
+    age : 18,
+    getName : function(){
+        return this.name;
+    }
+}
+```
+
+##### 32.对Web标准的理解
+
+web标准简单来说可以分为结构(html)、表现(css)和行为(js)。web标准一般是将该三部分独立分开，使其更具有模块化。对于结构要求：（标签规范可以提高搜索引擎对页面的抓取效率，对SEO很有帮助），对于css和js来说，尽量使用外链css样式表和js脚本，样式尽量少用行间样式表，使结构与表现分离，标签的id和class等属性命名要做到见文知义，标签越少，加载越快，用户体验提高，代码维护简单，便于改版。
+
+##### 33.浏览器内核差异
+
+1. 浏览器可以分为两部分，shell+内核。其中shell的种类相对比较多，内核则比较少。Shell是指浏览器的外壳：例如菜单，工具栏等。主要是提供给用户界面操作，参数设置等等。它是调用内核来实现各种功能的。内核才是浏览器的核心。内核是基于标记语言显示内容的程序或模块。它主要的功能是解释网页中的语法并渲染网页。所以渲染引擎决定了浏览器如何显示网页内容以及页面的格式信息。不同的浏览器内核对网页语法的解释不尽相同，这就导致了不同浏览器渲染出的网页可能有一些差异。
+
+2. 目前主流的浏览器有IE、Mozilla、FireFox、Opera、Safari、Chrome、Netscape等。
+
+3. Tridend内核：它就是IE的核心引擎，代表：搜狗、360、遨游、世界之窗。Gecko内核代表：这个是火狐firefox御用内核，Webkit内核代表：苹果Safari浏览器的和google的浏览器使用的是该内核，它的优点是快速解析javascript
+
+
