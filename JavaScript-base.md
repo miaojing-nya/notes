@@ -1,4 +1,4 @@
-### 关于JavaScript基本概念的总结
+### 关于JavaScript的基本知识点
 1. 一切变量，函数名和操作符都区分大小写。
 2. 标识符：是指变量，函数，属性的名字，或者函数的参数，可以是一个或多个字符。
 
@@ -129,5 +129,36 @@
     }
     ```
 
-9. JSON：作用、用途、设计结构：
+9. JSON：作用，设计结构：json是一种轻量级的数据交换格式，体积小,传输快，主要用于传送数据；易于阅读和编写，同时也易于机器解析和生成；客户端操纵XML的时候需要创建ActiveX对象，JSON则完全就是一个JS对象，不需要创建DOM。
+
+    ```
+    var languages = {
+        cn: {
+            lang: 'zh_cn',
+            name: '中文'
+        },
+        en: {
+            lang: 'us_en',
+            name: '英文'
+        }
+    };
+    ```
+
+    ```
+	{
+    "root": [
+        {
+            "workDay": "1",
+            "productType": "ZT4",
+            "customBatch": "",
+            "destination": "020"
+        },
+        {
+             "workDay": "7",
+             "productType": "ZT4",
+             "customBatch": "",
+             "destination": "020"
+         }]
+    }
+	```
 

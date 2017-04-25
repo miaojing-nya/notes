@@ -1,4 +1,4 @@
-### 前端面试知识点总结
+### HTML+CSS
 
 ##### 1. HTML常用标签
 
@@ -24,9 +24,21 @@
 4. 搜索引擎的爬虫依赖于标记来确定上下文和各个关键字的权重，利于 SEO；
 5. 使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
 
-##### 3. DOCTYPE
+##### 3. DOCTYPE，什么是严格模式与混杂模式？
 
-文档类型，一个文档类型标记是一种标准通用标记语言的**文档类型声明**，它的目的是要告诉标准通用标记语言解析器，它应该使用什么样的文档类型定义（DTD）来解析文档。Doctype还会对浏览器的渲染模式产生影响，不同的渲染模式会影响到浏览器对于 CSS 代码甚至 JavaScript 脚本的解析，所以Doctype是非常关键的，尤其是在 IE 系列浏览器中，由DOCTYPE 所决定的 HTML 页面的渲染模式至关重要。
+DOCTYPE是文档类型，一个文档类型标记是一种标准通用标记语言的**文档类型声明**，它的目的是要告诉标准通用标记语言解析器，它应该使用什么样的文档类型定义（DTD）来解析文档。Doctype还会对浏览器的渲染模式产生影响，不同的渲染模式会影响到浏览器对于 CSS 代码甚至 JavaScript 脚本的解析，所以Doctype是非常关键的，尤其是在 IE 系列浏览器中，由DOCTYPE 所决定的 HTML 页面的渲染模式至关重要。
+
+1. 严格模式：让IE的行为更接近标准行为
+
+	`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> `
+
+2. 过渡模式(混杂模式)：混杂模式是一种比较宽松的向后兼容的模式。混杂模式通常模拟老式浏览器的行为，以防止老站点无法工作
+
+	`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  `
+
+3. 两种模式间的差异
+对于这两种模式之间的差异，最显著的一个例子与Windows上IE专有的盒模型有关。在IE 6出现时，在标准模式中使用的是正确的盒模型，在混杂模式中使用的则是老式的专有盒模型。为了维持对IE 5和更低版本的向后兼容性，Opera 7和更高版本也在混杂模式中使用有缺点的IE盒模型。
+呈现方面的其他差异比较小，而且是与特定浏览器相关的，包括对于十六进制颜色值不需要#号、假设CSS中没有指定单位的长度的单位是像素，以及在使用关键字时将字号增加一级。
 
 ##### 4. 理解DOM结构
 
@@ -66,7 +78,7 @@ Document Object Module, 文档对象模型。我们通过JavaScript操作页面�
 
 ##### 6. 盒模型(box-sizing)
 
-想象成一个盒子，它有四个属性：外边距（margin）、边框（border）、内边距（padding）、内容（content）。
+想象成一个盒子，它有四个属性：外边距（margin）、边框（border）、内边距（padding）、内容（content）。ie低于版本8的浏览器的盒子模型中的width包括内边距和边框。
 
 1. 盒模型默认的值是content-box
 
@@ -225,9 +237,40 @@ img
 1. cookies：数据的生命期一般由服务器生成，可设置失效时间。如果在浏览器端生成Cookie，默认是关闭浏览器后失效；存放数据大小4K左右；与服务器端通信：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题；易用性：需要程序员自己封装，源生的Cookie接口不友好。
 2. localStorage和sessionStorage：存放数据大小：一般为5MB；与服务器端通信：仅在客户端（即浏览器）中保存，不参与和服务器的通信；易用性：源生接口可以接受，亦可再次封装来对Object和Array有更好的支持；但是数据的生命期：localStorage除非被清除，否则永久保存，sessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除
 
-##### 29. XMLHttpRequest
+##### 29. XMLHttpRequest，怎样完整地执行一次GET请求、怎样检测错误
 
-当页面全部加载完毕后，客户端通过该对象向服务器请求数据，服务器端接受数据并处理后，向客户端反馈数据。
+当页面全部加载完毕后，客户端通过该对象向服务器请求数据，服务器端接受数据并处理后，向客户端反馈数据。XMLHttpRequest 对象提供了在网页加载后与服务器进行通信的方法。
+
+```
+<script type="text/javascript">
+    var xmlhttp;
+    function loadXMLDoc(url){
+        xmlhttp = null;
+        if(window.XMLHttpRequest){    //code for all new browsers
+            xmlhttp=newXMLHttpRequest();
+        }elseif(window.ActiveXObject){    //code for IE5 and IE6
+            xmlhttp=newActiveXObject("Microsoft.XMLHTTP");
+        }
+        if(xmlhttp!=null){
+            xmlhttp.onreadystatechange=state_Change;
+               xmlhttp.open("GET",url,true);
+            xmlhttp.send(null);
+        }else{
+            alert("Your browser does not support XMLHTTP.");
+        }
+}
+
+function state_Change(){
+    if(xmlhttp.readyState==4){    //4 = "loaded"
+        if(xmlhttp.status==200){    //200 = OK
+            //...our code here...
+        }else{
+            alert("Problem retrieving XML data");
+        }
+    }
+}
+</script>
+```
 
 ##### 30. audio和video的支持格式
 
@@ -244,5 +287,20 @@ web标准简单来说可以分为结构(html)、表现(css)和行为(js)。web�
 2. 目前主流的浏览器有IE、Mozilla、FireFox、Opera、Safari、Chrome、Netscape等。
 
 3. Tridend内核：它就是IE的核心引擎，代表：搜狗、360、遨游、世界之窗。Gecko内核代表：这个是火狐firefox御用内核，Webkit内核代表：苹果Safari浏览器的和google的浏览器使用的是该内核，它的优点是快速解析javascript
+
+##### 33.浮动元素：怎么使用它们、它们有什么问题以及怎么解决这些问题？
+
+1. float:left;左浮动，float:right;右浮动
+
+2. 父元素的高度无法被撑开，影响与父元素同级的元素；与浮动元素同级的非浮动元素会跟随其后；若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构
+
+3. 使用CSS中的clear:both;属性来清除元素的浮动可解决2、3问题，对于问题1，添加如下样式，给父元素添加clearfix样式：
+
+	`.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}`
+
+    `.clearfix{display: inline-block;}  /* for IE/Mac */`
+
+##### 34.HTML5，XHTML之间有什么区别？
+个人理解：xhtml是HTML的规范版，XHTML 元素必须被正确地嵌套；XHTML 元素必须被关闭；标签名必须用小写字母；XHTML 文档必须拥有根元素。所以也严重制约其发展的问题，使其应用不广泛。
 
 
