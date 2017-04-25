@@ -160,6 +160,8 @@
 
 	`document.write(Math.abs(-10));     //结果：10`
 
+
+
 ### 函数
 
 	```
@@ -218,3 +220,230 @@
     var v=demo(200,20);
     alert(v);     //a比较大
     ```
+
+### 函数
+
+1. 声明变量的方式和构造函数的方式：
+
+    ```
+    var person = {     //var; 变量名；=；大括号
+		name:"张三",      //字符串要有引号，结束用逗号
+        age:20,     //数字不需要引号
+        eat:function(){
+        	alert("你好")
+        }
+    }
+    alert(person.name);     //结果：张三
+    alert(person.age);     //结果：20
+    alert(person.eat());     //结果：你好
+    ```
+
+	```
+    function person(){
+				           //创建函数当作类使用，也可以在里初始化变量
+    }
+    person.prototype = {     //prototype是添加属性
+		name:"张三",
+        age:20,
+        eat:function(){
+        	alert("你好")
+        }
+    }
+    var p = new person();     //用new创建对象
+    alert(p.name);     //得到相同结果
+    ```
+
+2. 继承父类：
+
+	```
+	function People(){}
+    People.prototype.say = function(){     //创建一个say的方法
+    	alert("你好");
+    }
+
+    function Student(){}
+    Student.prototype = new People();
+    var s = new Student();
+    s.say();     //结果：你好
+	```
+
+3. 覆写父类：
+
+	```
+	function People(){}
+    People.prototype.say = function(){
+    	alert("你好");
+    }
+
+    function Student(){}
+    Student.prototype = new People();
+    Student.prototype.say = function(){     //覆写父类
+    	alert("Stu-你好");
+    }
+
+    var s = new Student();
+    s.say();     //覆盖父类的结果，结果：Stu-你好
+	```
+
+4. 调用父类：
+    ```
+	function People(){}
+    People.prototype.say = function(){
+    	alert("你好");
+    }
+
+    function Student(){}
+    Student.prototype = new People();
+    var Ssay = Student.prototype.say;     //创建子类的一个对象
+    Student.prototype.say = function(){
+    	Ssay.call(this);
+        alert("S-你好")
+    }
+    var s = new Student();
+    s.say();     //结果：你好；S-你好；
+	```
+
+5. 传递和调用参数：
+
+    ```
+	function People(name){     //父类里添加一个参数
+    	this._name = name;     //用this进行索引
+    }
+    People.prototype.say = function(){
+    	alert("peo-hello"+ this._name);     //可以直接使用索引
+    }
+
+    function Student(name){     //子类里也添加一个参数
+    	this._name = name;     //用this进行索引
+    }
+    Student.prototype = new People();
+    var Ssay = Student.prototype.say;
+    Student.prototype.say = function(){
+    	Ssay.call(this);
+        alert("stu-hello"+this._name);     //可以直接使用索引
+    }
+    var s = new Student("张三");     //要传递一个参数
+    s.say();     //结果：peo-hello张三；stu-hello张三；
+	```
+
+6. 封装：对信息起到一个隐藏的作用：
+
+    ```
+	（function(){
+         //小括号，function(){},把信息放在function里边
+    }）     //用一个()来进行自己执行
+	```
+
+    ```
+	（function(){
+    	var n = "李四";     //定义一个属性n，但是封装后就调用不到了，在起内部可以引用，出了People这个函数后就调用不到了
+         function People(name){
+            this._name = name;
+        }
+        People.prototype.say = function(){
+            alert("peo-hello"+ this._name);
+        }
+    });     //结尾要加一个分号
+
+    function Student(name){     //子类里也添加一个参数
+    	this._name = name;     //用this进行索引
+    }
+    Student.prototype = new People();
+    var Ssay = Student.prototype.say;
+    Student.prototype.say = function(){
+    	Ssay.call(this);
+        alert("stu-hello"+this._name);     //可以直接使用索引
+    }
+    var s = new Student("张三");     //要传递一个参数
+    s.say();     //结果：peo-hello张三；stu-hello张三；
+
+	function lisi(){
+    	alert(n);
+    }
+    lisi();     //结果：报错，未定义，因为封装后，信息隐藏，调用不到
+	```
+
+    ```
+    var n = "李四";     //定义一个属性n，没有被封装，所以后面随便使用都能被调用到
+     function People(name){
+        this._name = name;
+    }
+    People.prototype.say = function(){
+        alert("peo-hello"+ this._name);
+    }
+
+    function Student(name){     //子类里也添加一个参数
+    	this._name = name;     //用this进行索引
+    }
+    Student.prototype = new People();
+    var Ssay = Student.prototype.say;
+    Student.prototype.say = function(){
+    	Ssay.call(this);
+        alert("stu-hello"+this._name);     //可以直接使用索引
+    }
+    var s = new Student("张三");     //要传递一个参数
+    s.say();     //结果：peo-hello张三；stu-hello张三；
+
+	function lisi(){
+    	alert(n);
+    }
+    lisi();     //结果：peo-hello张三；stu-hello张三；李四
+	```
+
+7. 封装后如何对其进行引用
+
+	```
+	(function(){
+    	var n = "李四";
+         function People(name){
+            this._name = name;
+        }
+        People.prototype.say = function(){
+            alert("peo-hello"+ this._name);
+        }
+        window.People = People     //对外部公开一个接口
+    });
+
+   (function(){
+        function Student(name){
+            this._name = name;
+        }
+        Student.prototype = new People();
+        var Ssay = Student.prototype.say;
+        Student.prototype.say = function(){
+            Ssay.call(this);
+            alert("stu-hello"+this._name);
+    	}
+        window.Student = Student;
+    });
+
+    var s = new Student("张三");    //要传递一个参数
+    s.say();     //结果：peo-hello张三；stu-hello张三；
+
+	function lisi(){
+    	alert(n);
+    }
+    lisi();     //结果：peo-hello张三；stu-hello张三；李四
+	```
+
+8. 通过对象赋值的方式进行继承：
+
+	```
+	function Person(){
+      var _this = {};     //创建一个新对象
+      _this.sayHello = function(){    //创建一个sayHello的方法
+        alert("你好");
+      }
+      return _this;     //要返回当前的this
+    }
+
+	//如何继承
+    function Teacher(){
+    	var _this = Person();     //把Person赋值给当前this
+        return _this;
+    }
+
+    var t = Teacher();
+    t.sayHello();     //结果：你好
+	```
+    注：同理覆写，传参和封装

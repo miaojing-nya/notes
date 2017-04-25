@@ -5,14 +5,31 @@
  	1. 其规则是：第一个字符必须是一个字母，下划线或一个美元符号，其他字母可以是字母，下划线，美元符号或数字，一般用驼峰大小写格式（即第一个字母小写，其余每个有意义的单词首字母大写，例doSomethingImportant）
  	2. 关键字，保留字，true，false和null不能用作标识符。
 
-3. 注释：
+3. 引用方式：两种
+
+   第一种：直接写在HTML的script标签里。
+
+   第二种：通过script标签的src属性外部引用，通常放在/body后面。
+
+4. 输出：
+
+   `document.write("hello")     //结果：你好`
+
+    ```
+	<p id="name">你好</p>     //结果：改变文案内容
+    <script>document.getElementByID("name").innerHTML="改变文案内容"</script>
+	```
+
+5. 语法：按照编写顺序依次执行；标识符；空格；代码换行；关键字；
+
+6. 注释：
 
     `//单行注释`
 
     ` /* 多行注释 */`
 
-4. 语句：语句以分号结尾，无论是一条语句还是多条语句，一般使用代码块的形式{}
-5. 变量：
+7. 语句：语句以分号结尾，无论是一条语句还是多条语句，一般使用代码块的形式{}
+8. 变量：
     ```
     var a = "hello";
     function check(){
@@ -50,7 +67,7 @@
     alert(a);   //结果：“hi”。全局变量可以不写var
     ```
 
-6. 数据类型：Undefind,Null,Boolean,Number和String五种基本数据类型，Object（包括数组和函数）一种复杂数据类型。五种基本数据类型是原始值，不可更改，值相等时他们才相等，比较两个单独字符串时，当且仅当长度相等且每个索引的字符都等时，他们才等。对象是可变的，值是可修改的，对象即便包含同样属性和相同值，或是各个索引完全相等，那他们也不等。
+9. 数据类型：Undefind,Null,Boolean,Number和String五种基本数据类型，Object（包括数组和函数）一种复杂数据类型。五种基本数据类型是原始值，不可更改，值相等时他们才相等，比较两个单独字符串时，当且仅当长度相等且每个索引的字符都等时，他们才等。对象是可变的，值是可修改的，对象即便包含同样属性和相同值，或是各个索引完全相等，那他们也不等。
     ```
      var a = {x=1},b = {x=1};  //a,b不全等，两个单独对象永不相等。
      var a = [],b = [];  //a,b不全等，两个单独数组永不相等。
@@ -71,7 +88,7 @@
     |  “无”时转为NaN      |   “无”时转为0     |
     |  变量被声明了但没赋值，就等于undefind;调用函数时应该提供的参数没有提供；对象没有赋值的属性，该属性值为undefind;函数没有返回值时，默认返回undefined     |   作为函数参数，表示该参数不是对象     |
 
-7. 操作符：
+10. 操作符：
 
      1. 一元加即转换成正数，一元减表示负数。
      2. 按位与（&）都是1才1，有一个0就是0；按位或（|）有一个1就是1，都是0时才0；按位异或（^）有一个1时才1，有两个1或两个0时才0。
@@ -104,7 +121,55 @@
 
         `var max = (a > b) ? a : b;   //若a>b,则a复制给max,a<=b,则b值返回给max`
 
-8. 创建对象有几种方式？
+
+11. 数组的写法：
+
+   ```
+    //第一种写法：
+	var arr = [1,2,"你好“,4,5];
+
+    //第二种写法：用new声明一个对象
+	var arr = new Array(1,2,"你好“,4,5);
+
+    //第三种写法：虚拟一个对象后再赋值
+	var arr = new Array（）;
+    arr[0] = 1;
+    arr[1] = 2;
+    arr[2] = "你好";
+
+    document.write(arr[0]);     //结果：1
+   ```
+
+12. 声明变量的方式和构造函数的方式：
+
+    ```
+    var person = {     //var; 变量名；=；大括号
+		name:"张三",      //字符串要有引号，结束用逗号
+        age:20,     //数字不需要引号
+        eat:function(){
+        	alert("你好")
+        }
+    }
+    alert(person.name);     //结果：张三
+    alert(person.age);     //结果：20
+    alert(person.eat());     //结果：你好
+    ```
+
+	```
+    function person(){
+				           //创建函数当作类使用，也可以在里初始化变量
+    }
+    person.prototype = {     //prototype是添加属性
+		name:"张三",
+        age:20,
+        eat:function(){
+        	alert("你好")
+        }
+    }
+    var p = new person();     //用new创建对象
+    alert(p.name);     //得到相同结果
+    ```
+13. 创建对象有几种方式？
 
 	1. 基于Object对象
 
@@ -129,7 +194,7 @@
     }
     ```
 
-9. JSON：作用，设计结构：json是一种轻量级的数据交换格式，体积小,传输快，主要用于传送数据；易于阅读和编写，同时也易于机器解析和生成；客户端操纵XML的时候需要创建ActiveX对象，JSON则完全就是一个JS对象，不需要创建DOM。
+14. JSON：作用，设计结构：json是一种轻量级的数据交换格式，体积小,传输快，主要用于传送数据；易于阅读和编写，同时也易于机器解析和生成；客户端操纵XML的时候需要创建ActiveX对象，JSON则完全就是一个JS对象，不需要创建DOM。
 
     ```
     var languages = {
@@ -160,5 +225,161 @@
              "destination": "020"
          }]
     }
+	```
+15. 遍历：
+	json数据
+	```
+	var myCost = [
+	{
+		'costtype': {
+			'type': '1',
+			'value': '衣服a'
+		},
+		'pay': 10
+	},
+	{
+		'costtype': {
+			'type': '2',
+			'value': '裤子'
+		},
+		'pay': 20
+	},
+	{
+		'costtype': {
+			'type': '3',
+			'value': '裙子'
+		},
+		'pay': 30
+	},
+	{
+		'costtype': {
+			'type': '1',
+			'value': '衣服b'
+		},
+		'pay': 40
+	}
+	];
+	```
+    遍历总花销：
+
+    ```
+	var prize = 0;
+    for (var i = 0; i < myCost.length; i++) {
+        var cost = myCost[i];
+        prize += cost.pay;
+        console.log(prize);
+    }
+	```
+
+    遍历type为1的衣服的花销：
+
+    ```
+	var prize = 0;
+    for (var i = 0; i < myCost.length; i++) {
+        var cost = myCost[i];
+        var type = cost.costtype.type;
+        if (type == 1) {
+            prize += cost.pay;
+            console.log(cost.pay);
+        }
+    }
+    console.log("总共:" + prize);
+	```
+
+16. 遍历的两种方式：
+
+	```
+    function(val){
+
+      var result = '';
+
+      for(var t = 0;t < orderList.length;t++){
+
+        if(orderList[t].value == val){
+          result = orderList[t].text;
+        }
+
+      }
+
+      return result;
+    }
+    ```
+
+    ```
+    function(val){
+
+      var result = '';
+
+      orderList.forEach(function(item,index){
+
+        if(item.value == val){
+          result = item.text;
+        }
+
+      });
+
+      return result;
+    }
+    ```
+
+17. ++和--的区别：
+
+	```
+	var a = [1,2,3,4];
+
+    for(var i=0; i < a.length; i++){
+      if(i == 2){
+        a.splice(i,1)     //去掉数组的第2个索引的1个值
+      }
+    }
+
+    console.log(a)     //结果：[1,2,4]
+	```
+
+	如果去掉好几个值，那么i的值就变了，接下来的操作就都不再准确，这时就用--
+
+    ```
+	var a = [1,2,3,4];
+
+    for(var i=0; i < a.length; i++){
+      if(i == 1){
+        a.splice(i,2)     //去掉数组的第1个索引的2个值
+      }
+    }
+
+    console.log(a)     //结果：[1,4]     4原来是3的值，现在变成1的值了
+	```
+
+    ```
+	var a = [1,2,3,4];
+
+    for(var i=a.length; i < = 0; i--){
+      if(i == 1){
+        a.splice(i,2)
+      }
+    }
+
+    console.log(a)     //结果：[1,4]
+	```
+
+18. 数字1-10求和：
+
+	```
+	var a = 0;
+    for(var i=0;i<10;i++){
+      a+=i;
+    }
+    console.log(a);
+	```
+
+19. 求6,56,888,77,5543,999的和：
+
+	```
+	var a = 0;
+    var arry = [6,56,888,77,5543,999];
+    for(var i=arry.length; i>=0;i--){
+      a+=arry[i];
+    }
+    console.log(a);
 	```
 
