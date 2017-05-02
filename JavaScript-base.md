@@ -377,7 +377,7 @@
 	```
 	var a = 0;
     var arry = [6,56,888,77,5543,999];
-    for(var i=arry.length; i>=0;i--){
+    for(i=0;i<arry.length;i++){
       a+=arry[i];
     }
     console.log(a);
