@@ -383,3 +383,106 @@
     console.log(a);
 	```
 
+20. 作用域：作用域就是变量与函数的可访问范围，变量的作用域有全局作用域和局部作用域两种。
+
+	1. 全局作用域：最外层函数和在最外层函数外面定义的变量拥有全局作用域；所有末定义直接赋值的变量自动声明为拥有全局作用域；所有window对象的属性拥有全局作用域，例如window.name、window.location、window.top等等。
+	2. 局部作用域：在函数内声明的变量具有函数作用域，局部变量优先级高于全局变量。
+
+21. 作用域链：就是一个变量解析的过程，第一个对象中没有名为x的属性，js会继续查找链上的下一个对象。如果第二个对象依然没有名为x的属性，则会继续查找下一个，以此类推。with语句主要用来临时扩展作用域链，将语句中的对象添加到作用域的头部。
+
+	```
+	person={name:"yhb",age:22,height:175,wife:{name:"lwy",age:21}};
+with(person.wife){
+    console.log(name);
+}
+//with语句将person.wife添加到当前作用域链的头部，所以输出的就是：“lwy"
+	```
+
+22. 引用类型：.运算优先级高于=运算符
+
+	```
+	var a = {n:1};
+    var b = a;
+    a.x = a = {n:2};
+
+    alert(a.x);// --> undefined
+    alert(b.x);// --> [object Object]
+	```
+
+23. 类型转换：
+    1. 比较时候的转换的原则:
+
+        一个是number一个是string时，会尝试将string转换为number
+        尝试将boolean转换为number，0或1
+        尝试将Object转换成number或string，取决于另外一个对比量的类型
+
+    2. 运算过程的转换原则：
+
+        字符串与数字相加，变成字符串
+        字符串与数字相减，变成数字
+
+24. 写一个function，清除字符串前后的空格。(兼容所有浏览器)
+
+    ```
+	if (!String.prototype.trim) {
+     String.prototype.trim = function() {
+     return this.replace(/^\s+/, "").replace(/\s+$/,"");
+     }
+    }
+
+    // test the function
+    var str = " \t\n test string ".trim();
+    alert(str == "test string"); // alerts "true"
+    ```
+
+25. 如何消除一个数组里面重复的元素？
+
+	`myArray.filter(function(elem, pos,self){return self.indexOf(elem)== pos;})`
+
+26. ES6中的箭头函数
+
+	```
+	var odds = evens.map(function (v) {
+      return v + 1;
+    });
+
+    //相当于
+	var odds = evens.map(v => v + 1);
+	```
+
+    ```
+	var nums = evens.map(function (v, i) {
+      return v + i;
+    });
+
+    //相当于
+    var nums = evens.map((v, i) => v + i);
+	```
+
+    ```
+	nums.forEach(function (v) {
+      if (v % 5 === 0) fives.push(v);
+    });
+
+    //相当于
+    nums.forEach(v => {
+      if (v % 5 === 0)
+        fives.push(v);
+    });
+	```
+
+27. 原型链：因为每个对象和原型都有原型，对象的原型指向原型对象，而父的原型又指向父的父，这种原型层层连接起来的就构成了原型链。
+
+	```
+	function Person(name, age){
+        this.name = name;
+        this.age = age;
+      }
+    Person.prototype.MaxNumber = 9999;
+    Person.__proto__.MinNumber = -9999;
+    var will = new Person("Will", 28);
+    console.log(will.MaxNumber); // 9999
+    console.log(will.MinNumber); // undefined
+	```
+
+    当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止，到查找到达原型链的顶部（也就是 Object.prototype），如果仍然没有找到指定的属性，就会返回 undefined。在这个例子中分别给”Person.prototype “和” Person.proto”这两个原型对象添加了”MaxNumber “和”MinNumber”属性，这里就需要弄清”prototype”和”proto”的区别了。

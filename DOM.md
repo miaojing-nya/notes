@@ -125,3 +125,8 @@
 
 ##### F.捕获事件:
   与事件冒泡相反，事件会从最外层开始发生，直到最具体的元素。如果时间冒泡发生顺序是：p -> div -> body -> html -> document，那么事件捕获是：document -> html -> body -> div -> p
+
+##### G.怎样添加、移除、移动、复制、创建和查找节点
+
+[http://blog.csdn.net/qi1271199790/article/details/53869508](http://)
+
