@@ -303,4 +303,27 @@ web标准简单来说可以分为结构(html)、表现(css)和行为(js)。web�
 ##### 34.HTML5，XHTML之间有什么区别？
 个人理解：xhtml是HTML的规范版，XHTML 元素必须被正确地嵌套；XHTML 元素必须被关闭；标签名必须用小写字母；XHTML 文档必须拥有根元素。所以也严重制约其发展的问题，使其应用不广泛。
 
+##### 35.元素居中的方式
+
+1. 水平居中的text-align:center 和 margin:0 auto，这两种方法都是用来水平居中的，垂直居中是line-height
+
+2. 已知元素宽高时，top:50%;left:50%以及margin-top:一半的height值的的负数;margin- left:一半的weight值的负数。
+
+3. 未知元素宽高时（只支持IE9+的浏览器），position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+
+4. position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;（不支持IE7以下的浏览器）
+
+5.js的方式：
+
+	```
+	var div = document.getElementById('box');
+    var clientW = document.documentElement.clientWidth;
+    var clientH = document.documentElement.clientHeight;
+    var iW = div.offsetWidth;
+    var iH = div.offsetHeight;
+
+    div.style.left = (clientW - iW)/2+'px';
+    div.style.top = (clientH- iH)/2+'px';
+	```
+
 
