@@ -137,9 +137,7 @@
     vm.greet() // -> 'Hello Vue.js!'
 	```
 
-10. 计算属性：computed
-
-	`{{fullName}}`
+10. 计算属性：computed  `{{fullName}}`
 
     ```
     data () {
@@ -147,8 +145,8 @@
         firstName: 'John',
         lastName: 'Smith',
       }
-   }
-	```
+    }
+    ```
 
     ```
 	computed: {
@@ -156,7 +154,7 @@
         return (this.firstName + ' ' + this.lastName);
       }
     },
-	```
+    ```
 
 11. 组件：components
 
