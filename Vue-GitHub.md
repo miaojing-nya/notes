@@ -142,7 +142,7 @@
 	`{{fullName}}`
 
     ```
-	data () {
+    data () {
       return {
         firstName: 'John',
         lastName: 'Smith',
