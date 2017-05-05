@@ -66,6 +66,25 @@
     test();
     alert(a);   //结果：“hi”。全局变量可以不写var
     ```
+    ```
+	var foo = 1;
+    function aa(){
+    	//相当于省略了var foo;
+        console.log(foo);
+        var foo = 2;
+        console.log(foo);
+    }
+    aa();     //结果：undefined和2
+	```
+    ```
+	var foo = 1;
+    function aa(){
+        console.log(foo);
+        foo = 2;     //相当于全局变量
+        console.log(foo);
+    }
+    aa();     //结果：1和2
+	```
 
 9. 数据类型：Undefind,Null,Boolean,Number和String五种基本数据类型，Object（包括数组和函数）一种复杂数据类型。五种基本数据类型是原始值，不可更改，值相等时他们才相等，比较两个单独字符串时，当且仅当长度相等且每个索引的字符都等时，他们才等。对象是可变的，值是可修改的，对象即便包含同样属性和相同值，或是各个索引完全相等，那他们也不等。
     ```
@@ -486,3 +505,138 @@ with(person.wife){
 	```
 
     当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止，到查找到达原型链的顶部（也就是 Object.prototype），如果仍然没有找到指定的属性，就会返回 undefined。在这个例子中分别给”Person.prototype “和” Person.proto”这两个原型对象添加了”MaxNumber “和”MinNumber”属性，这里就需要弄清”prototype”和”proto”的区别了。
+
+28. 闭包：就是能够在外部访问函数内部的函数。在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。用途：读取函数内部的变量；使变量的值始终保持在内存中
+
+	```
+	function a(){
+    	var i = 0;
+        function b(){
+        	alert(++i);
+        }
+        return b;
+    }
+    var c = a();
+    c();
+    //a执行完之后，并不会被被垃圾回收机制回收，因为b需要依赖a中的变量。
+	```
+
+	下面这个ul，如何点击每一列的时候alert其index?
+
+    ```
+    <ul id=”test”>
+        <li>这是第一条</li>
+        <li>这是第二条</li>
+        <li>这是第三条</li>
+    </ul>
+
+	// 方法一：
+    var lis=document.getElementById('2223').getElementsByTagName('li');
+    for(var i=0;i<3;i++)
+    {
+        lis[i].index=i;
+        lis[i].onclick=function(){
+            alert(this.index);
+        };
+    }
+
+    //方法二：
+    var lis=document.getElementById('2223').getElementsByTagName('li');
+    for(var i=0;i<3;i++)
+    {
+        lis[i].index=i;
+        lis[i].onclick=(function(a){
+            return function() {
+                alert(a);
+            }
+        })(i);
+    }
+	```
+
+29. JavaScript是一门什么样的语言，它有哪些特点？
+
+	JavaScript 是一种脚本语言；动态的；不需要编译就可以由解释器直接运行；变量松散定义，属于弱类型语言；面向对象的（把数据及对数据的操作方法放在一起，作为一个相互依存的整体）。
+
+30. 强类型与弱类型的区别：
+
+    区分大小写，需要实现申明类型外,一个重要的区别是,弱类型的语言的东西没有明显的类型,他能随着环境的不同,自动变换类型，而强类型则没这样的规定,不同类型间的操作有严格定义,只有相同类型的变量才能操作,虽然系统也有一定的默认转换,当绝没有弱类型那么随便
+
+31. 如何判断某变量是否为数组数据类型？
+
+	```
+    if(typeof Array.isArray==="undefined")
+    {
+      Array.isArray = function(arg){
+            return Object.prototype.toString.call(arg)==="[object Array]"
+        };
+    }
+	```
+
+32. 已知ID的Input输入框，希望获取这个输入框的输入值
+
+	`document.getElementById(“ID”).value`
+
+33. 希望获取到页面中所有的checkbox怎么做？
+
+	```
+	var domList = document.getElementsByTagName(‘input’)
+    var checkBoxList = [];
+    var len = domList.length;　　//缓存到局部变量
+    while (len--) {　　//使用while的效率会比for循环更高
+      if (domList[len].type == ‘checkbox’) {
+          checkBoxList.push(domList[len]);
+      }
+    }
+	```
+
+34. 设置一个已知ID的DIV的html内容为xxxx，字体颜色设置为黑色
+
+	```
+	var dom = document.getElementById(“ID”);
+    dom.innerHTML = “xxxx”
+    dom.style.color = “#000”
+	```
+
+35. 看下列代码输出为何？解释原因。
+
+	```
+	var a;
+    alert(typeof a); // undefined，在使用var声明变量但并未对其赋值进行初始化时，这个变量的值就是undefined
+    alert(b); // 报错，而b由于未声明将报错。注意未申明的变量和声明了未赋值的是不一样的。
+	```
+
+    ```
+	var a = null;
+	alert(typeof a); //object，null是一个只有一个值的数据类型，这个值就是null。表示一个空指针对象，所以用typeof检测会返回”object”。
+	```
+
+36. 输出今天的日期，以YYYY-MM-DD的方式，比如今天是2014年9月26日，则输出2014-09-26
+
+	```
+	var d = new Date();
+    // 获取年，getFullYear()返回4位的数字
+    var year = d.getFullYear();
+    // 获取月，月份比较特殊，0是1月，11是12月
+    var month = d.getMonth() + 1;
+    // 变成两位
+    month = month < 10 ? '0' + month : month;
+    // 获取日
+    var day = d.getDate();
+    day = day < 10 ? '0' + day : day;
+    alert(year + '-' + month + '-' + day);
+	```
+37. `foo = foo||bar`相当于`if(!foo) foo = bar;`如果foo存在，值就是foo，否则值是bar。
+
+38. 用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。
+
+	```
+	var iArray = [];
+    funtion getRandom(istart, iend){
+            var iChoice = istart - iend +1;
+            return Math.floor(Math.random() * iChoice + istart;
+    }
+    for(var i=0; i<10; i++){
+            iArray.push(getRandom(10,100));
+    }
+    iArray.sort();
+	```
