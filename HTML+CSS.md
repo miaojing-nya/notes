@@ -313,7 +313,7 @@ web标准简单来说可以分为结构(html)、表现(css)和行为(js)。web�
 
 4. position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;（不支持IE7以下的浏览器）
 
-5.js的方式：
+ 5.js的方式：
 
 	```
 	var div = document.getElementById('box');
