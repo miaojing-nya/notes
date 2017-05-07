@@ -315,15 +315,15 @@ web标准简单来说可以分为结构(html)、表现(css)和行为(js)。web�
 
  5.js的方式：
 
-	```
-	var div = document.getElementById('box');
-    var clientW = document.documentElement.clientWidth;
-    var clientH = document.documentElement.clientHeight;
-    var iW = div.offsetWidth;
-    var iH = div.offsetHeight;
+		```
+		var div = document.getElementById('box');
+	    var clientW = document.documentElement.clientWidth;
+	    var clientH = document.documentElement.clientHeight;
+	    var iW = div.offsetWidth;
+	    var iH = div.offsetHeight;
 
-    div.style.left = (clientW - iW)/2+'px';
-    div.style.top = (clientH- iH)/2+'px';
-	```
+	    div.style.left = (clientW - iW)/2+'px';
+	    div.style.top = (clientH- iH)/2+'px';
+		```
 
 
