@@ -213,6 +213,19 @@
     }
     ```
 
+    3. 原型链的方式添加属性
+
+	```
+	function Parent(){
+
+    };
+    Parent.prototype.name="李小龙";
+    Parent.prototype.age="30";
+    Parent.prototype.lev=lev;
+    var x =new Parent();
+    alert(x.name);
+	```
+
 14. JSON：作用，设计结构：json是一种轻量级的数据交换格式，体积小,传输快，主要用于传送数据；易于阅读和编写，同时也易于机器解析和生成；客户端操纵XML的时候需要创建ActiveX对象，JSON则完全就是一个JS对象，不需要创建DOM。
 
     ```
@@ -640,3 +653,110 @@ with(person.wife){
     }
     iArray.sort();
 	```
+
+39. clientWidth = width + padding
+
+    clientHeight = height + padding
+
+    offsetWidth = width + padding + border
+
+    offsetHeight = height + padding + border
+
+40. slice()方法 和splice 方法的区别
+
+	splice() 方法 用于插入、删除或替换数组的元素；
+
+    1. splice 的参数 ：splice (start, deleteCount, [item1[, item2[, . . . [,itemN]]]])
+
+    2. 数组从 start下标开始，删除deleteCount 个元素，并且可以在这个位置开始添加 n个元素
+
+	3. 当start ,deleteCount 均为0 的时候，也就是在数组的最前面插入新的元素。
+
+	4. 当参数只有start，deleteCount 就是从start 下标开始删除deleteCount 个数组的元素，
+
+	5. 当参数只有start参数时，就是删除 从start下标起至最后的元素，当参数 为负的时 则该参数规定的是从数组元素的尾部开始算起的位置 （-1 指的是 数组中倒数第一个元素， -2 指的是，数组中倒数第二个元素。）
+
+	slice() 方法 可提取字符串的某个部分，并以新的字符串返回被提取的部分。
+
+    1. 对于数组对象来说，slice 方法提取 从 start下标起 以end下标 为结尾的 一段元素（但不包括end下标的元素），然后返回新的数组，对原数组没有任何是影响，
+
+	2. 当参数为负时 则该参数 是从 数组的末尾 索引 开始算起，（-1 指的是 数组中倒数第一个元素， -2 指的是，数组中倒数第二个元素。）
+
+	3. 当参数为一个参数，当为一个参数时，提取是以 start下标起至末尾的部分元素。
+
+	4. 当start为0时，等于说是克隆一个新的数组，克隆后两个数组进行各自的操作，都互不影响，var clone = array.slice(0)；
+
+	```
+	var array = new Array(1,2,3,4,5,6);
+	array.slice(1,3)     //第一个起第三个止，不包括第三个
+    结果：[2,3]     //array仍然是[1,2,3,4,5,6], 不改变原数组
+	```
+
+    ```
+	var array = new Array(1,2,3,4,5,6);
+	array.splice(1,3)     //两个参数时：删除第一个起的三个参数
+    结果：[2,3,4]     //array变成[1,5,6], 改变原数组
+	```
+
+    ```
+	var array = new Array(1,2,3,4,5,6);
+	array.splice(1,3,0,8)     //多个参数时：删除第一个起的三个参数，并在此处插入0，8
+    结果：[2，3，4]     //array变成[1，0，8，5，6], 改变原数组
+	```
+
+    ```
+	var array = new Array(1,2,3,4,5,6);
+	array.splice(2)     //一个参数时：删除第一个起到最后一个止的数组
+    结果：[3，4，5，6]     //array变成[1，2], 改变原数组
+	```
+
+41. addEventListener()与removeEventListener()的用法
+
+	`element.addEventListener(type,listener,useCapture)
+`
+
+	1. 其中element是要绑定函数的对象。
+	2. type是事件名称，要注意的是"onclick"要改为"click","onblur"要改为"blur",也就是说事件名不要带"on"。
+	3. listener当然就是绑定的函数了，记住不要跟括号。
+	4. 最后一个参数是个布尔值，表示该事件的响应顺序，值参数是true，表示在捕获阶段调用事件处理程序；如果是false，表示在冒泡阶段调用事件处理程序。
+	5. 移除时传入的参数与添加处理程序时使用的参数相同。这也意味着通过addEventListener()添加的匿名函数无法移除。
+
+    ```
+	var btn = document.getElementById("myBtn");
+btn.addEventListener("click", function () {
+    alert(this.id);
+}, false);
+btn.removeEventListener("click", function () {  //无效！
+    alert(this.id);
+}, false);
+	```
+
+    ```
+	var btn = document.getElementById("myBtn");
+var handler = function () {
+        alert(this.id);
+    };
+btn.addEventListener("click", handler, false);
+btn.removeEventListener("click", handler, false);  //有效！重写后的这个例子没有问题，是因为在addEventListener()和removeEventListener()
+	```
+
+    ```
+	<input id="info"  type="button" value="Click Me!" />
+    function myhandler(){
+        console.log("I have been clicked!");
+              		document.getElementById('info').removeEventListener('click',myhandler,false);
+            }
+        var target=document.getElementById('info');
+           target.addEventListener('click',myhandler,false);
+	```
+42. JavaScript定时器
+
+    `window.setTimeout("function",time)；//设置一个超时对象，只执行一次,无周期`
+
+    `window.setInterval("function",time)；//设置一个超时对象，周期＝'交互时间'`
+
+    停止定时：
+
+    `window.clearTimeout(对象) 清除已设置的setTimeout对象`
+
+   ` window.clearInterval(对象) 清除已设置的setInterval对象`
