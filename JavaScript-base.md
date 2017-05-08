@@ -723,21 +723,21 @@ with(person.wife){
 
     ```
 	var btn = document.getElementById("myBtn");
-btn.addEventListener("click", function () {
-    alert(this.id);
-}, false);
-btn.removeEventListener("click", function () {  //无效！
-    alert(this.id);
-}, false);
+	btn.addEventListener("click", function () {
+    	alert(this.id);
+	}, false);
+	btn.removeEventListener("click", function () {  //无效！
+    	alert(this.id);
+	}, false);
 	```
 
     ```
 	var btn = document.getElementById("myBtn");
-var handler = function () {
+	var handler = function () {
         alert(this.id);
     };
-btn.addEventListener("click", handler, false);
-btn.removeEventListener("click", handler, false);  //有效！重写后的这个例子没有问题，是因为在addEventListener()和removeEventListener()
+	btn.addEventListener("click", handler, false);
+	btn.removeEventListener("click", handler, false);  //有效！重写后的这个例子没有问题，是因为在addEventListener()和removeEventListener()
 	```
 
     ```
