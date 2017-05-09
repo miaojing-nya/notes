@@ -120,7 +120,11 @@
 1. 以下事件不冒泡：blur、focus、load、unload。
 1. 阻止时间冒泡：
   ```
-  event.stopPropagation();
+  event.stopPropagation();     //事件冒泡
+  ```
+
+  ```
+  event.preventDefault();     //事件捕获
   ```
 
 ##### F.捕获事件:
