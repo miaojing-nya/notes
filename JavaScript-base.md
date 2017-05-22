@@ -815,3 +815,121 @@ with(person.wife){
     <div v-on:click.self="doThat">...</div>
 
 	```
+
+44. 什么是WebPack？
+
+WebPack可以看做是模块打包机，它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的格式以供浏览器使用。
+
+WebPack和Gulp相比有什么特性：Gulp是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案。
+
+Grunt和Gulp的工作方式是：在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，这个工具之后可以自动替你完成这些任务。
+
+Webpack的工作方式是：把你的项目当做一个整体，通过一个给定的主文件（如：index.js），Webpack将从这个文件开始找到你的项目的所有依赖文件，使用loaders处理它们，最后打包为一个浏览器可识别的JavaScript文件。
+
+模块化：
+1. 提供两个工具处理样式表，css-loader 和 style-loader，css-loader使你能够使用类似@import 和 url(...)的方法实现 require()的功能,style-loader将所有的计算后的样式加入页面中，二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中。
+2. CSS modules，通过CSS模块，所有的类名，动画名默认都只作用于当前模块。
+3. webpack-pulgins：插件（Plugins）是用来拓展Webpack功能的，它们会在整个构建过程中生效。loaders是在打包构建过程中用来处理源文件的（JSX，Scss，Less..），一次处理一个，而插件并不直接操作单个文件，它直接对整个构建过程其作用，要使用某个插件，我们需要通过npm安装它。
+
+45. 面向对象三大特性：
+
+	1. 封装: 把相关的信息（无论数据或方法）存储在对象中的能力
+    2. 继承: 由另一个类（或多个类）得来类的属性和方法的能力
+    3. 多态: 编写能以多种方法运行的函数或方法的能力
+
+46. 封装的常用方式：
+
+	1. 生成实例对象的原始模式：这就是最简单的封装了，把两个属性封装在一个对象里面。但是，这样的写法有两个缺点，一是如果多生成几个实例，写起来就非常麻烦；二是实例与原型之间，没有任何办法，可以看出有什么联系。
+
+		```
+		var Cat = {
+            name : '',
+            color : ''
+        }
+        var cat1 = {}; // 创建一个空对象
+　　　　 cat1.name = "大毛"; // 按照原型对象的属性赋值
+　　　　 cat1.color = "黄色";
+        var cat2 = {}; // 生成两个实例
+　　　　 cat2.name = "二毛";
+　　　　 cat2.color = "黑色";
+		```
+
+    2. 调用函数的方式
+
+        ```
+        　function Cat(name,color) {
+            return {
+              name:name,
+              color:color
+            }
+          }
+          var cat1 = Cat("大毛","黄色");
+　　		var cat2 = Cat("二毛","黑色");
+        ```
+
+    3. 构造函数的模式：this，new
+
+		```
+		function Cat(name,color){
+            this.name=name;
+            this.color=color;
+        }
+        var cat1 = new Cat("大毛","黄色");
+        var cat2 = new Cat("二毛","黑色");
+　　     alert(cat1.name); // 大毛
+　　     alert(cat1.color); // 黄色
+		```
+
+        ```
+		alert(cat1.constructor == Cat); //true
+        alert(cat2.constructor == Cat); //true
+        //constructor返回的是引用的谁
+		```
+
+		```
+        alert(cat1 instanceof Cat); //true
+        alert(cat2 instanceof Cat); //true
+        //instanceof运算符，验证原型对象与实例对象之间的子类关系。
+		```
+
+    4. Prototype模式
+
+		```
+		function Cat(name,color){
+            this.name = name;
+            this.color = color;
+        }
+        Cat.prototype.type = "猫科动物";
+        Cat.prototype.eat = function(){alert("吃老鼠")};
+        var cat1 = new Cat("大毛","黄色");
+        var cat2 = new Cat("二毛","黑色");
+　　     alert(cat1.type); // 猫科动物
+　　     cat1.eat(); // 吃老鼠
+		```
+
+    5. object.create()方式
+
+        ```
+		 var Person = {
+        	name: 'pawn',
+        	sayHello: function() {
+            	console.log(this.name);
+        	}
+    	}
+    	var p = Object.create(Person);
+    	p.sayHello();
+        ```
+
+47. 继承的常用方式：
+
+	1. 构造函数绑定：使用call或apply方法，将父元素的构造函数绑定在子对象上，即在子对象上加一行apply
+
+	```
+	function Cat(name,color){
+　　　　Animal.apply(this, arguments);
+　　　　this.name = name;
+　　　　this.color = color;
+　　}
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
+	```

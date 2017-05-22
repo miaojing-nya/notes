@@ -332,5 +332,77 @@ X-DNS-Prefetch-Control 头控制着浏览器的 DNS 预读取功能。 DNS 预�
 
 `<meta http-equiv="x-dns-prefetch-control" content="off">   //关闭 DNS 预解析，content="off"启用 DNS 预解析`
 
+37. css预编辑器 Less、Sass 和 Stylus
 
+优点：提供CSS缺失的样式层复用机制、嵌套书写、层级关系更加明显、减少冗余代码，提高样式代码的可维护性。
 
+语法：
+1. 去掉冒号，大括号，分好
+2. 嵌套
+3. 选择器&
+4. 变量@
+5. 运算
+6. 混入@import语句插值，导入
+7. 函数
+
+38. 兄弟选择器(+ 和 ~)的区别
+
++: 紧接在另一个元素后的元素，相当于相邻兄弟选择器。
+~：查找某一个指定元素的后面的所有兄弟结点。
+
+39. 怎么处理inline-block间的间隙
+
+	1. 去掉标签间的空格
+
+	```
+	<div class="space">
+    <a href="##">
+    惆怅</a><a href="##">
+    淡定</a><a href="##">
+    热血</a>
+	</div>
+
+    或者
+
+    <div class="space">
+    <a href="##">惆怅</a
+    ><a href="##">淡定</a
+    ><a href="##">热血</a>
+	</div>
+
+    或者
+    <div class="space">
+    <a href="##">惆怅</a><!--
+    --><a href="##">淡定</a><!--
+    --><a href="##">热血</a>
+	</div>
+	```
+
+    2. 使用margin负值
+    3. font-size:0
+    4. letter-spacing
+
+40. 清除浮动的几种方式
+
+   	1. 固定高度时，给父元素height值，保证浮动后无法自动获取高度
+   	2. 结尾处加空div标签 clear:both
+   	3. 父级div定义 overflow:hidden
+   	4. 父级div定义 伪类:after 和 zoom
+
+	```
+	/*清除浮动代码*/
+    		    .clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+    .clearfloat{zoom:1}
+	```
+
+41. vh:相对于视口的高度。视口被均分为100单位的vh;
+
+    vw：相对于视口的宽度。视口被均分为100单位的vw；
+
+	em:强调标签；
+
+    rem：长度单位；
+
+42. css3新特性
+
+	1. 选择器；2. @Font-face 特性，可用来加载字体样式；3. 文字渲染；4. CSS3 的多列布局；5. 渐变阴影；6. 多背景；7. Transform和Animation，旋转，拉伸
