@@ -876,8 +876,8 @@ with(person.wife){
         }
         var cat1 = new Cat("大毛","黄色");
         var cat2 = new Cat("二毛","黑色");
-　　     alert(cat1.name); // 大毛
-　　     alert(cat1.color); // 黄色
+        alert(cat1.name);     //大毛
+        alert(cat1.color);     //黄色
 		```
 
         ```
@@ -903,8 +903,8 @@ with(person.wife){
         Cat.prototype.eat = function(){alert("吃老鼠")};
         var cat1 = new Cat("大毛","黄色");
         var cat2 = new Cat("二毛","黑色");
-　　     alert(cat1.type); // 猫科动物
-　　     cat1.eat(); // 吃老鼠
+        alert(cat1.type);     //猫科动物
+        cat1.eat();     //吃老鼠
 		```
 
     5. object.create()方式
