@@ -929,9 +929,9 @@ with(person.wife){
 　　　　Animal.apply(this, arguments);
 　　　　this.name = name;
 　　　　this.color = color;
-　　}
-　　var cat1 = new Cat("大毛","黄色");
-　　alert(cat1.species); // 动物
+    }
+    var cat1 = new Cat("大毛","黄色");
+    alert(cat1.species);//动物
 	```
 
 48. 跨域问题：只要协议、域名、端口有任何一个不同，都被当作是不同的域。http://www.cnblogs.com/2050/p/3191744.html
