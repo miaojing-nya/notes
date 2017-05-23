@@ -933,3 +933,125 @@ Webpack的工作方式是：把你的项目当做一个整体，通过一个给�
 　　var cat1 = new Cat("大毛","黄色");
 　　alert(cat1.species); // 动物
 	```
+
+48. 跨域问题：只要协议、域名、端口有任何一个不同，都被当作是不同的域。http://www.cnblogs.com/2050/p/3191744.html
+
+49. 处理错误的几种方式
+
+    1. try...catch...
+
+        ```
+		function message()
+        {
+        try
+           {
+           adddlert("Welcome guest!")
+           }
+        catch(err)
+           {
+             txt="本页中存在错误。\n\n"
+             txt+="点击“确定”继续查看本页，\n"
+             txt+="点击“取消”返回首页。\n\n"
+             if(!confirm(txt))
+                 {
+                 document.location.href="/index.html"
+                 }
+           }
+        }
+		```
+
+    2. throw
+    3. onerror
+
+50. Promise，就是ES6原生提供的一个对象，用来传递异步操作的消息。特点：Promise 对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和 Rejected（已失败）。但是，无法取消 Promise，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，Promise 内部抛出的错误，不会反应到外部。
+
+51. vue1.0和vue2.0的区别：
+
+	1. 根元素： 在2.0中template下需要有一个根元素，否则会报错；
+	2. 在1.0中的ready已经被mounted取代；
+	3. api和生命周期的变化
+
+52. 检测数据类型的几种方式：
+
+	1. typeof：返回字符串，但是不适合检测引用数据类型。
+
+		```
+        var a = "iamstring.";
+        var b = 222;
+        var c= [1,2,3];
+        var d = new Date();
+        var e = function(){alert(111);};
+        var f = function(){this.name="22";};
+
+
+        alert(typeof a)   ------------> string
+        alert(typeof b)   ------------> number
+        alert(typeof c)   ------------> object
+        alert(typeof d)   ------------> object
+        alert(typeof e)   ------------> function
+        alert(typeof f)   ------------> function
+        其中typeof返回的类型都是字符串形式，需注意，例如：
+        alert(typeof a == "string") -------------> true
+        alert(typeof a == String) ---------------> false
+        另外typeof 可以判断function的类型；在判断除Object类型的对象时比较方便。
+		```
+
+    2.  instanceof和constructor：某一个实例是否属于某个类，但instanceof在类的原型继承中，我们最后检测出来的结果未必准确，不适合检测基本类型，constructor能检测基本数据类型
+
+		```
+		alert(c instanceof Array) ---------------> true
+        alert(d instanceof Date)
+        alert(f instanceof Function) ------------> true
+        alert(f instanceof function) ------------> false
+        注意：instanceof 后面一定要是对象类型，并且大小写不能错，该方法适合一些条件选择或分支。
+        ```
+
+        ```
+		alert(c.constructor === Array) ----------> true
+        alert(d.constructor === Date) -----------> true
+        alert(e.constructor === Function) -------> true
+        注意： constructor 在类继承时会出错
+        eg：
+              function A(){};
+              function B(){};
+              A.prototype = new B(); //A继承自B
+              var aObj = new A();
+              alert(aobj.constructor === B) -----------> true;
+              alert(aobj.constructor === A) -----------> false;
+        而instanceof方法不会出现该问题，对象直接继承和间接继承的都会报true：
+              alert(aobj instanceof B) ----------------> true;
+              alert(aobj instanceof B) ----------------> true;
+        言归正传，解决construtor的问题通常是让对象的constructor手动指向自己：
+              aobj.constructor = A; //将自己的类赋值给对象的constructor属性
+              alert(aobj.constructor === A) -----------> true;
+              alert(aobj.constructor === B) -----------> false; //基类不会报true了;
+		```
+
+    3. jquery.type()
+
+		```
+		如果对象是undefined或null，则返回相应的“undefined”或“null”。
+        jQuery.type( undefined ) === "undefined"
+        jQuery.type() === "undefined"
+        jQuery.type( window.notDefined ) === "undefined"
+        jQuery.type( null ) === "null"
+        如果对象有一个内部的[[Class]]和一个浏览器的内置对象的 [[Class]] 相同，我们返回相应的 [[Class]] 名字。 (有关此技术的更多细节。 )
+        jQuery.type( true ) === "boolean"
+        jQuery.type( 3 ) === "number"
+        jQuery.type( "test" ) === "string"
+        jQuery.type( function(){} ) === "function"
+        jQuery.type( [] ) === "array"
+        jQuery.type( new Date() ) === "date"
+        jQuery.type( new Error() ) === "error" // as of jQuery 1.9
+        jQuery.type( /test/ ) === "regexp"
+        其他一切都将返回它的类型“object”。
+		```
+
+    4.  Object.prototype.toString.call();
+
+53. jquery动画和css3的区别：css3是基于css的，不需要任何语言，效率高，但兼容性差，当有复杂事件且兼容性要求高的时候用jquery。
+
+54. vue.js实现双向绑定的原理
+
+	1. http://www.cnblogs.com/kidney/p/6052935.html?utm_source=gold_browser_extension
+	2. http://www.jb51.net/article/99129.htm
