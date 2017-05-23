@@ -759,60 +759,60 @@ with(person.wife){
 
     `window.clearTimeout(对象) 清除已设置的setTimeout对象`
 
-   ` window.clearInterval(对象) 清除已设置的setInterval对象`
+    ` window.clearInterval(对象) 清除已设置的setInterval对象`
 
 43. Vue事件处理器
 
 	1. 事件监听
 
-    ```
+    	```
 	<div id="example-1">
-      <button v-on:click="counter += 1">增加 1</button>
-      <p>这个按钮被点击了 {{ counter }} 次。</p>
-    </div>
-    data: {
-        counter: 0
-      }
+      		<button v-on:click="counter += 1">增加 1</button>
+     		 <p>这个按钮被点击了 {{ counter }} 次。</p>
+    	</div>
+    	data: {
+        	counter: 0
+      	}
 	```
 
-    2. 方法事件
+    	2. 方法事件
 
-    ```
+    	```
 	<button v-on:click="greet">Greet</button>
-    methods: {
-        greet: function (event) {
-          alert('Hello')
+    	methods: {
+		greet: function (event) {
+	  		alert('Hello')
+		}
         }
-      }
 	```
 
-    3. 内联处理器方法
+    	3. 内联处理器方法
 
-    ```
+    	```
 	<button v-on:click="say('hi')">Say hi</button>
   	<button v-on:click="say('what')">Say what</button>
-    methods: {
-        say: function (message) {
-          alert(message)
-        }
-      }
+    	methods: {
+        	say: function (message) {
+          		alert(message)
+        	}
+      	}
 	```
 
-    4. 常见方法
+    	4. 常见方法
 
 	```
 	<!-- 阻止单击事件冒泡 -->
-    <a v-on:click.stop="doThis"></a>
-    <!-- 提交事件不再重载页面 -->
-    <form v-on:submit.prevent="onSubmit"></form>
-    <!-- 修饰符可以串联  -->
-    <a v-on:click.stop.prevent="doThat"></a>
-    <!-- 只有修饰符 -->
-    <form v-on:submit.prevent></form>
-    <!-- 添加事件侦听器时使用事件捕获模式 -->
-    <div v-on:click.capture="doThis">...</div>
-    <!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
-    <div v-on:click.self="doThat">...</div>
+    		<a v-on:click.stop="doThis"></a>
+    	<!-- 提交事件不再重载页面 -->
+    		<form v-on:submit.prevent="onSubmit"></form>
+    	<!-- 修饰符可以串联  -->
+    		<a v-on:click.stop.prevent="doThat"></a>
+    	<!-- 只有修饰符 -->
+    		<form v-on:submit.prevent></form>
+    	<!-- 添加事件侦听器时使用事件捕获模式 -->
+        	<div v-on:click.capture="doThis">...</div>
+    	<!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+    		<div v-on:click.self="doThat">...</div>
 
 	```
 
@@ -926,12 +926,12 @@ Webpack的工作方式是：把你的项目当做一个整体，通过一个给�
 
 	```
 	function Cat(name,color){
-　　　　Animal.apply(this, arguments);
-　　　　this.name = name;
-　　　　this.color = color;
-　　}
-　　var cat1 = new Cat("大毛","黄色");
-　　alert(cat1.species); // 动物
+　　　　	Animal.apply(this, arguments);
+　　　　	this.name = name;
+　　　　	this.color = color;
+        }
+　　     var cat1 = new Cat("大毛","黄色");
+　　     alert(cat1.species); // 动物
 	```
 
 48. 跨域问题：只要协议、域名、端口有任何一个不同，都被当作是不同的域。http://www.cnblogs.com/2050/p/3191744.html
@@ -941,24 +941,20 @@ Webpack的工作方式是：把你的项目当做一个整体，通过一个给�
     1. try...catch...
 
         ```
-		function message()
-        {
-        try
-           {
-           adddlert("Welcome guest!")
-           }
-        catch(err)
-           {
-             txt="本页中存在错误。\n\n"
-             txt+="点击“确定”继续查看本页，\n"
-             txt+="点击“取消”返回首页。\n\n"
-             if(!confirm(txt))
-                 {
-                 document.location.href="/index.html"
-                 }
-           }
+	function message(){
+		try{
+		   adddlert("Welcome guest!")
+		}
+		catch(err){
+		   txt="本页中存在错误。\n\n"
+		   txt+="点击“确定”继续查看本页，\n"
+		   txt+="点击“取消”返回首页。\n\n"
+		   if(!confirm(txt)){
+			 document.location.href="/index.html"
+		   }
+		}
         }
-		```
+	```
 
     2. throw
     3. onerror
