@@ -517,7 +517,7 @@ with(person.wife){
     console.log(will.MinNumber); // undefined
 	```
 
-    当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止，到查找到达原型链的顶部（也就是 Object.prototype），如果仍然没有找到指定的属性，就会返回 undefined。在这个例子中分别给”Person.prototype “和” Person.proto”这两个原型对象添加了”MaxNumber “和”MinNumber”属性，这里就需要弄清”prototype”和”proto”的区别了。
+    当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止，到查找到达原型链的顶部（也就是 Object.prototype），如果仍然没有找到指定的属性，就会返回 undefined。在这个例子中分别给”Person.prototype “和” Person.proto”这两个原型对象添加了”MaxNumber “和”MinNumber”属性，这里就需要弄清”prototype”和”proto”的区别了。__proto__是每个对象都有的一个属性，而prototype是函数才会有的属性。
 
 28. 闭包：就是能够在外部访问函数内部的函数。在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。用途：读取函数内部的变量；使变量的值始终保持在内存中
 
