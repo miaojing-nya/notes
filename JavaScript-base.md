@@ -1067,3 +1067,42 @@ with(person.wife){
 55. js获得时间戳
 
 	`var timestamp = Date.parse(new Date());`
+
+56. js捕获异常的方法
+
+	```
+	try{
+	//此处运行代码
+    }catch(err){
+    //此处处理错误
+    }
+    ```
+
+57. js常用对象有哪些？
+
+	1. string对象:
+
+        charAt()：返回在指定位置的字符。
+
+        charCodeAt()：返回在指定的位置的字符的 Unicode 编码。
+
+        concat()：连接字符串。
+
+        fromCharCode()：从字符编码创建一个字符串。
+
+        String indexOf()：检索字符串，返回字符串出现的位置，如果没有找到，返回-1。
+
+        lastIndexOf()：从后向前搜索字符串，返回字符串出现的位置，如果没有找到，返回-1 。
+
+        split()：把字符串分割为字符串数组。
+
+        substr()：从起始索引号提取字符串中指定数目的字符。
+
+        substring()：提取字符串中两个指定的索引号之间的字符。
+
+        toLowerCase()：把字符串转换为小写。
+
+        toUpperCase()：把字符串转换为大写。
+    2. Math对象:
+    3. Date对象：
+
