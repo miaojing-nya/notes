@@ -1063,3 +1063,7 @@ with(person.wife){
 	1. js类库：jquery，zeptojs，dom操作
 	2. js框架：比如angularjs实现数据双向绑定，操纵数据DOM就会自动刷新，使得开发者主要精力集中到数据处理上，很少处理DOM操纵，效率很高很流行。
 	3. 前端框架 bootstrap jquery mobile，一般前端框架由js库，css库和各种插件库组成，是写好的各种可重用的组件，主要用于网站快速开发。
+
+55. js获得时间戳
+
+	`var timestamp = Date.parse(new Date());`
