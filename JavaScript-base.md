@@ -1116,3 +1116,63 @@ with(person.wife){
 	2. Echarts 兼容 IE6 及以上的所有主流浏览器，同样支持移动端的缩放和手势操作。Echarts 基于Canvas，适用于数据量比较大的情况。
 	3. D3 兼容IE9 及以上的所有主流浏览器，对于移动端的兼容性也同上。D3.v3 基于SVG，方便自己定制；D3.v4支持Canvas+SVG。
 
+59. 事件监听
+
+	当同一个对象使用.onclick的写法触发多个方法的时候，后一个方法会把前一个方法覆盖掉，也就是说，在对象的onclick事件发生时，只会执行最后绑定的方法。而用事件监听则不会有覆盖的现象，每个绑定的事件都会被执行。
+
+    ```
+	window.onload = function(){
+     var btn = document.getElementById("yuanEvent");
+     btn.onclick = function(){
+      alert("第一个事件");
+     }
+     btn.onclick = function(){
+      alert("第二个事件");
+     }
+     btn.onclick = function(){
+      alert("第三个事件");
+     }
+    }     //结果是只输出：第三个事件，因为后一个方法都把前一个方法覆盖掉了。
+	```
+
+    解决方式：
+
+    1. 原生态的事件绑定函数addEventListener：
+
+		```
+		var eventOne = function(){
+         alert("第一个监听事件");
+        }
+        function eventTwo(){
+         alert("第二个监听事件");
+        }
+        window.onload = function(){
+         var btn = document.getElementById("yuanEvent");
+         //addEventListener：绑定函数
+         btn.addEventListener("click",eventOne);
+         btn.addEventListener("click",eventTwo);
+        }     //输出：第一个监听事件 和 第二个监听事件
+		```
+
+    2. 采用事件监听给对象绑定方法后，可以解除相应的绑定
+
+		```
+        var eventOne = function(){
+         alert("第一个监听事件");
+        }
+        function eventTwo(){
+         alert("第二个监听事件");
+        }
+        window.onload = function(){
+         var btn = document.getElementById("yuanEvent");
+         btn.addEventListener("click",eventOne);
+         btn.addEventListener("click",eventTwo);
+         btn.removeEventListener("click",eventOne);
+		```
+
+    3. 解除绑定事件的时候一定要用函数的句柄，把整个函数写上是无法解除绑定的。
+
+        ```
+		btn.addEventListener("click",eventTwo);
+		btn.removeEventListener("click",eventOne);
+		```
