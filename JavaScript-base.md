@@ -1176,3 +1176,7 @@ with(person.wife){
 		btn.addEventListener("click",eventTwo);
 		btn.removeEventListener("click",eventOne);
 		```
+
+60. 上移，下移，置顶，置底，全选，反选，不选，移除：[http://www.qdfuns.com/notes/44273/7c1706a4d2170b82e14f74d63d2c398d.html](http://)
+
+61.  SDK：软件开发工具包
