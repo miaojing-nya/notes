@@ -981,7 +981,10 @@ with(person.wife){
         alert(cat1.species);//动物
         ```
 
-48. 跨域问题：只要协议、域名、端口有任何一个不同，都被当作是不同的域。http://www.cnblogs.com/2050/p/3191744.html
+48. 跨域问题：只要协议、域名、端口有任何一个不同，都被当作是不同的域。JSONP的原理：在前端开发中，实现跨域都是把动态资源伪装成脚本来实现跨域。通过脚本可以读取他域上的动态资源，所以可以动态创建script来读取他域的动态资源。
+	1. [http://blog.csdn.net/wuliyun88/article/details/50522336](http://)
+	2. [http://www.cnblogs.com/2050/p/3191744.html](http://)
+	3. [http://blog.csdn.net/kongjiea/article/details/44201021](http://)
 
 49. 处理错误的几种方式
 
