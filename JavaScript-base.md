@@ -519,7 +519,54 @@ with(person.wife){
 
     当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止，到查找到达原型链的顶部（也就是 Object.prototype），如果仍然没有找到指定的属性，就会返回 undefined。在这个例子中分别给”Person.prototype “和” Person.proto”这两个原型对象添加了”MaxNumber “和”MinNumber”属性，这里就需要弄清”prototype”和”proto”的区别了。__proto__是每个对象都有的一个属性，而prototype是函数才会有的属性。
 
-28. 闭包：就是能够在外部访问函数内部的函数。在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。用途：读取函数内部的变量；使变量的值始终保持在内存中
+28. 闭包：在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。用途：一是读取函数内部的变量；二是使变量的值始终保持在内存中。
+
+	```
+	var Get_Number = function ()
+    {
+        var number = 1;
+        return {
+            plus: function ()
+            {
+                number ++;
+            },
+            out: function ()
+            {
+                return number;
+            }
+        };
+    };
+
+    var r = Get_Number();
+    r.plus();
+    r.out();
+	```
+
+    ```
+	var Get_Number = function ()
+    {
+        var number = 1;
+        return {
+            plus: function ()
+            {
+                number ++;
+            },
+            out: function ()
+            {
+                return number;
+            }
+        };
+    };
+
+    var r = Get_Number();
+    r.change = function ()
+    {
+        number = 0;
+    };
+    r.change();
+    r.plus();
+    r.out();
+	```
 
 	```
 	function a(){
@@ -1190,3 +1237,31 @@ with(person.wife){
 	6. JSX − JSX 是 JavaScript 语法的扩展。React 开发不一定使用 JSX ，但我们建议使用它。
 	7. 组件 − 通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。
 	8. 单向响应的数据流 − React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。
+
+63. js如何定义类
+    Javascipt语法不支持"类"（class），导致传统的面向对象编程方法无法直接使用。但是可以用Javascript模拟"类"。以下总结了Javascript定义"类"的三种方法。
+    1. 构造函数法
+        ```
+        function Cat() {
+            this.name = "大毛";
+        }
+     	var cat1 = new Cat();     //生成实例时用new关键字
+    	alert(cat1.name); // 大毛
+        Cat.prototype.makeSound = function(){     //类的属性和方法，还可以定义在构造函数的prototype对象之上。
+        	alert("喵喵喵");
+        }
+		```
+
+    2. Object.create()法：类就是一个对象，不是函数
+
+		```
+        var Cat = {
+            name: "大毛",
+            makeSound: function(){ alert("喵喵喵"); }
+        };
+		var cat1 = Object.create(Cat);     //直接用Object.create()生成实例，不需要用到new
+        alert(cat1.name); // 大毛
+        cat1.makeSound(); // 喵喵喵
+		```
+
+    3. 采用封装继承的方法（极简主义法）
