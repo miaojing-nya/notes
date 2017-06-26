@@ -1285,7 +1285,7 @@ with(person.wife){
 
 		2. 函数类的toString()，返回这个函数实现定义的表现方式，即源代码的字符串。
 
-        ```
+        	```
 		(function(){
 			f(x)
 		}).toString()  //function(x){}
@@ -1299,7 +1299,7 @@ with(person.wife){
 
 		4. 正则RegExp类的toString()，转换为正则表达式直接量的字符串。
 
-        ```
+        	```
 		/\d+/g.toString()/; // "/\d+/g"
 		```
 
@@ -1307,14 +1307,14 @@ with(person.wife){
 
 	`public static String valueOf(Object obj){return (obj==null) ? "null" : obj.toString()};`
 
-    ```
+    	```
 	Boolean boolean1 = true;
 	String str3 = (String)boolean1;//这行代码会报错，编译不过
 	String str4 = boolean1.toString();//正常
 	String str5 = String.valueOf(boolean1);//正常
 	```
 
-    4. 而对于数值，我们可以调用valueOf的时候直接可以获得数字进行计算，不必转化成字符串，所以不会调用toString，反言之，如果我们需要获得操作对象的字符串形式的时候就会调用其toString函数。
+       4. 而对于数值，我们可以调用valueOf的时候直接可以获得数字进行计算，不必转化成字符串，所以不会调用toString，反言之，如果我们需要获得操作对象的字符串形式的时候就会调用其toString函数。
 
 	```
 	var arr = [1,2,3];
@@ -1324,11 +1324,11 @@ with(person.wife){
 	alert(arr.valueOf());
 	```
 
-    ```
+    	```
 	var now = new Date();
-    typeof(now + 1);  "string"加号讲日期对象转换为字符串
-    typeof(npw - 1);  "number"减号将两个操作符都转换为数字
-    now = now.tostring();  "true"字符串的转换
-    now > (now - 1)  "number"减号转换为数字，然后比较，对于正确
+    	typeof(now + 1);  "string"加号讲日期对象转换为字符串
+   	typeof(npw - 1);  "number"减号将两个操作符都转换为数字
+	now = now.tostring();  "true"字符串的转换
+    	now > (now - 1)  "number"减号转换为数字，然后比较，对于正确
 	```
 
