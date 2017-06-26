@@ -1275,34 +1275,34 @@ with(person.wife){
 		1. String：毫无疑问，这种就是强转形式，简单方便，效率高。java程序员可能看到效率高或许有些激动，但是它有他的不好，那就是局限性。
 		2. toString():在API文档中是这样说的，返回此对象本身（它已经是一个字符串了！！！）。按照它的意思就是说一般的对象或者参数都是有toString()的方法的，只是要注意在一个参数定义为int类型是就没有这个方法了。还有如果obj不为空，那么就能正常编译，那么如果obj取出来为空的话，那么就会报出空指针异常的。
 
-		1. 数组类的toString()，将每个数组元素都转换为一个字符串，并在元素间添加逗号合并成结果字符串。
+            1. 数组类的toString()，将每个数组元素都转换为一个字符串，并在元素间添加逗号合并成结果字符串。
 
-            ```
-            var colors = ["red", "blue", "green"]; // 创建一个包含3 个字符串的数组
-            alert(colors.toString()); // red,blue,green
-            alert(colors.valueOf()); // red,blue,green
-            alert(colors); // red,blue,green
-            ```
+                ```
+                var colors = ["red", "blue", "green"]; // 创建一个包含3 个字符串的数组
+                alert(colors.toString()); // red,blue,green
+                alert(colors.valueOf()); // red,blue,green
+                alert(colors); // red,blue,green
+                ```
 
-		2. 函数类的toString()，返回这个函数实现定义的表现方式，即源代码的字符串。
+            2. 函数类的toString()，返回这个函数实现定义的表现方式，即源代码的字符串。
 
-            ```
-            (function(){
-                f(x)
-            }).toString()  //function(x){}
-            ```
+                ```
+                (function(){
+                    f(x)
+                }).toString()  //function(x){}
+                ```
 
-		3. 日期类的toString()，返回一个可读的日期和时间字符串。
+            3. 日期类的toString()，返回一个可读的日期和时间字符串。
 
-            ```
-            new Date(2010,0,1).toString()  //Fri Jan 01 2010 00:00:00
-            ```
+                ```
+                new Date(2010,0,1).toString()  //Fri Jan 01 2010 00:00:00
+                ```
 
-		4. 正则RegExp类的toString()，转换为正则表达式直接量的字符串。
+            4. 正则RegExp类的toString()，转换为正则表达式直接量的字符串。
 
-            ```
-            /\d+/g.toString()/; // "/\d+/g"
-            ```
+                ```
+                /\d+/g.toString()/; // "/\d+/g"
+                ```
 
 		3. String.valueOf()：这个方法是静态的，直接通过String调用，可以说是完美，只是平时不习惯这样写而已，这样的实现避免了前面两个的不足和缺点。
 
