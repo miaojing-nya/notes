@@ -1334,4 +1334,25 @@ with(person.wife){
         now = now.tostring();  "true"字符串的转换
         now > (now - 1)  "number"减号转换为数字，然后比较，对于正确
         ```
+65. in：当“对象”为数组时，“变量”指的是数组的“索引”；当“对象”为对象是，“变量”指的是对象的“属性”。
 
+    ```
+	var arr = ["a","b","2","3","str"];
+	var result = ("b" in arr);
+	var result1 = (4 in arr);
+	document.write(result+"<br>");  //false
+	document.write(result1+"<br>");  //true
+    ```
+
+    ```
+	var obj={
+         w:"wen",
+         j:"jian",
+         b:"bao"
+    }
+	var result=(2 in obj);
+	var result1=("j" in obj);
+	document.write(result)+"<br/>";  //false
+	document.write(result1)+"<br/>";  //true
+	```
+66. js四种循环语句：while，do while，for，for in
